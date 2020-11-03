@@ -1,4 +1,11 @@
 @import url(meyer-reset.css);
+.co-map {
+  width: 800px;
+  height: 600px; }
+
+path:focus {
+  outline: none; }
+
 h1 {
   font-size: 5rem;
   font-weight: 900;
@@ -7,19 +14,37 @@ h1 {
 h2 {
   font-size: 2rem; }
 
+h3 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem; }
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 900; }
+
 p {
-  font-size: 1.5rem; }
+  font-size: 1rem; }
+
+section {
+  width: 100%; }
 
 .App {
-  color: white;
-  font-family: 'Source Sans Pro', sans-serif; }
+  color: #1a354b;
+  font-family: 'Source Sans Pro', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-width: 100vw;
+  min-height: 100vh; }
 
-.hero-image {
+.header {
   width: 100vw;
-  height: 100vh;
-  background-image: url("https://bloximages.newyork1.vip.townnews.com/outtherecolorado.com/content/tncms/assets/v3/editorial/9/15/915037cd-3a2b-5f4a-bb6a-b50b71244876/5eecdc2017c01.image.jpg");
-  background-size: cover;
-  background-repeat: no-repeat; }
+  background-color: white;
+  position: fixed;
+  z-index: 10;
+  box-shadow: 0 3px 12px 0px rgba(189, 189, 189, 0.39);
+  margin-bottom: 1rem;
+  height: fit-content; }
 
 .App-header {
   display: flex;
@@ -27,24 +52,31 @@ p {
   align-items: center;
   flex-wrap: wrap; }
 
+.stack-sections {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column; }
+
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 100%;
-  min-height: 8rem;
-  margin: 3rem 3rem 40rem 3rem;
-  border-bottom: white 1.75px solid; }
+  width: 100vw;
+  margin: 1rem 3rem 2rem 3rem;
+  border-bottom: #1a354b 1.75px solid; }
 
 .nav-bar {
   display: flex;
   align-items: baseline;
   margin-bottom: 1rem; }
+  .nav-bar a {
+    padding-top: 1rem; }
   .nav-bar a:link {
-    color: white;
+    color: #1a354b;
     text-decoration: none; }
   .nav-bar a:visited {
-    color: white;
+    color: #1a354b;
     text-decoration: none; }
 
 .nav-icon {
@@ -60,6 +92,60 @@ flex-container-center {
   display: flex;
   justify-content: space-between;
   align-items: center; }
+
+.page-title {
+  margin: 1rem; }
+  .page-title h3, .page-title p {
+    margin: 1rem;
+    margin-left: 6rem;
+    margin-right: 6rem; }
+
+.beacon-title {
+  background-color: #5a778c;
+  padding: 1rem;
+  color: white; }
+
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 11rem;
+  width: 100%; }
+
+.course-type {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  text-align: center; }
+  .course-type p {
+    margin: .5rem; }
+
+.course-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column; }
+
+.course-item {
+  border: 1px #1a354b solid;
+  padding: 1rem;
+  margin: .5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%;
+  text-align: left; }
+  .course-item .class-title {
+    width: 50%; }
+
+.course-item:hover {
+  background-color: #5a778c;
+  color: white; }
 
 .menu-button {
   position: relative;
@@ -78,7 +164,7 @@ flex-container-center {
   height: 6px;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 2px 5px grey;
+  box-shadow: 0 2px 5px #1a354b;
   transition: all .5s ease-in-out; }
 
 .menu-btn-burger::before,
