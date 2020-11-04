@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import CourseList from './CourseList'
+import CourseList from './CourseList';
 
 function CoursesPage() {
   

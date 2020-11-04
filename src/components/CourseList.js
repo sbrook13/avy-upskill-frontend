@@ -66,7 +66,7 @@ function CoursesList() {
     return courses.map(course => {
       console.log(course)
       return (
-        <div className="course-item">
+        <div className="list-item">
           <h4 className="class-title">{course.class_type}</h4>
           <section className="course-details">
             <p>{course.provider}</p>

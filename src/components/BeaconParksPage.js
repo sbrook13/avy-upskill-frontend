@@ -6,6 +6,7 @@ function BeaconParksPage() {
   const beaconParksURL = `${baseURL}/beacon_parks/`
 
   const [beaconParks, setBeaconParks] = useState([])
+  const [markerName, setMarkerName] = useState("")
 
   // useEffect(() => {
   //   fetchBeaconParkData()
@@ -88,7 +89,7 @@ function BeaconParksPage() {
         <h2>Colorado's Free Beacon Parks</h2>
         <p>Beacon parks provide an easy, convenient way to practice your skills. The parks are free, open to the public, simple, and always on and available. Each park may be a bit different but all are easy to use and have instructions. They have switches to turn on one or more buried transceivers.</p>
       </section>
-      <MapContainer markers={markers}/>
+      <MapContainer markers={markers} setMarkerName={setMarkerName} markerName={markerName}/>
     </div>
   );
 }

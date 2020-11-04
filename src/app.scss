@@ -3,7 +3,7 @@
 $base-color: white;
 $dark-color: #1a354b;
 $medium-color: #5a778c;
-$light-font: white;
+$highlight: #FF5533;
 $dark-font: #1a354b;
 $border-dark: rgba($base-color, 0.88);
 $county-outline: #28465b;
@@ -55,6 +55,25 @@ section {
   width: 100%;
 }
 
+button {
+  padding: 1rem;
+  border-radius: 4px;
+  color: white;
+  background-color: $dark-color;
+  border: none;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  min-width: 10rem;
+  button:focus {
+    outline: none
+  }
+
+}
+
+button:hover {
+  background-color: $medium-color;
+}
+
 .App {
   color: $dark-font;
   font-family: 'Source Sans Pro', sans-serif;
@@ -65,7 +84,7 @@ section {
 }
 
 .header {
-  width: 100vw;
+  width: 100%;
   // height: 100vh;
   background-color: $base-color;
   // background-image: url("https://i.imgur.com/tb7hq68.jpg");
@@ -76,6 +95,32 @@ section {
   height: fit-content;
 }
 
+.footer {
+  background-color: $medium-color;
+  min-height: 4rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h4{
+    font-size: 14px;
+    font-weight: 400;
+  }
+  p {
+    font-size: 12px;
+    font-weight: 900;
+  }
+  a {
+    font-size: 12px;
+  }
+  img {
+    max-width: 30px;
+    max-height: 30px;
+    padding: .25rem;
+  }
+}
+
 .App-header {
   display: flex;
   justify-content: space-between;
@@ -83,11 +128,26 @@ section {
   flex-wrap: wrap;
 }
 
+.flex-container-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .stack-sections {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end;
   flex-direction: column;
+}
+.right-align {
+  align-items: flex-end;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+.ski-sidebar {
+  height: 475px;
 }
 
 .main-header {
@@ -117,7 +177,7 @@ section {
 }
 
 .nav-icon {
-  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 .title {
@@ -125,12 +185,6 @@ section {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-}
-
-flex-container-center {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .page-title {
@@ -152,14 +206,6 @@ flex-container-center {
   color: white;
 }
 
-// main {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   flex-direction: column;
-
-// }
-
 .main-section {
   display: flex;
   justify-content: space-between;
@@ -168,7 +214,7 @@ flex-container-center {
   text-align: center;
   position: relative;
   z-index: 1;
-  margin-top: 10rem;
+  margin-top: 9.6rem;
   width: 100%;
 }
 
@@ -220,7 +266,20 @@ flex-container-center {
     border-radius: 4px;
   }
   select:focus {
-    outline: orangered;
+    outline: none;
+  }
+}
+
+form {
+  input {
+    padding: .25rem;
+    padding-left: 1rem;
+    margin: .25rem;
+    border-radius: 4px;
+    border: 1px $dark-color solid;
+  }
+  input:focus {
+    outline: none;
   }
 }
 
@@ -233,7 +292,8 @@ flex-container-center {
     margin-top:0;
   }
 }
-.course-item {
+
+.list-item {
   border: 1px $dark-color solid;
   padding: 1rem;
   margin: .5rem;
@@ -242,7 +302,7 @@ flex-container-center {
   align-items: center;
   position: relative;
   width: 90%;
-  height: 2.25rem;
+  min-height: 2.25rem;
   text-align: left;
   .class-title {
     width: 40%;
