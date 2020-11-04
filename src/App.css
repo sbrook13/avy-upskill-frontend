@@ -24,7 +24,8 @@ h4 {
   font-weight: 900; }
 
 p {
-  font-size: 1rem; }
+  font-size: 1rem;
+  line-height: 20px; }
 
 section {
   width: 100%; }
@@ -63,7 +64,7 @@ section {
   justify-content: space-between;
   align-items: flex-start;
   width: 100vw;
-  margin: 1rem 3rem 2rem 3rem;
+  margin: 1.5rem 3rem 2rem 3rem;
   border-bottom: #1a354b 1.75px solid; }
 
 .nav-bar {
@@ -94,11 +95,14 @@ flex-container-center {
   align-items: center; }
 
 .page-title {
-  margin: 1rem; }
-  .page-title h3, .page-title p {
-    margin: 1rem;
+  margin: 2rem; }
+  .page-title h2, .page-title p {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
     margin-left: 6rem;
     margin-right: 6rem; }
+  .page-title img {
+    max-width: 300px; }
 
 .beacon-title {
   background-color: #5a778c;
@@ -113,23 +117,57 @@ flex-container-center {
   text-align: center;
   position: relative;
   z-index: 1;
-  margin-top: 11rem;
+  margin-top: 10rem;
   width: 100%; }
 
+.landing-page {
+  background-image: url("https://i.imgur.com/tb7hq68.jpg");
+  background-size: cover; }
+
 .course-type {
-  width: 100vw;
+  width: 95vw;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  text-align: center; }
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem; }
   .course-type p {
     margin: .5rem; }
+
+.split-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  width: 100%; }
+  .split-section img {
+    max-width: 32%;
+    position: relative;
+    box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39); }
+  .split-section .course-list {
+    width: 65%; }
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: .5rem; }
+  .search-bar select {
+    min-width: 12rem;
+    padding: .25rem;
+    margin: .25rem;
+    border-radius: 4px; }
+  .search-bar select:focus {
+    outline: orangered; }
 
 .course-list {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column; }
+  .course-list h3 {
+    margin-top: 0; }
 
 .course-item {
   border: 1px #1a354b solid;
@@ -138,10 +176,17 @@ flex-container-center {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 70%;
+  position: relative;
+  width: 90%;
+  height: 2.25rem;
   text-align: left; }
   .course-item .class-title {
-    width: 50%; }
+    width: 40%; }
+  .course-item .course-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    text-align: left; }
 
 .course-item:hover {
   background-color: #5a778c;

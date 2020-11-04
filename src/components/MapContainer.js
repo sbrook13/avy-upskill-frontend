@@ -20,7 +20,7 @@ function MapContainer({markers}) {
           projection="geoAlbers"
           projectionConfig={{ 
             scale: 7000,
-            rotate: [100, 0, 4],
+            rotate: [100, .5, 4],
           }}
         > 
           <ZoomableGroup 

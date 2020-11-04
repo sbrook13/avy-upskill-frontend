@@ -85,7 +85,7 @@ function BeaconParksPage() {
     <div className="BeaconParks main-section">
       <section className="page-title beacon-title">
         <img src="https://content.backcountry.com/promo_upload/bcs/brand/backcountry-access/BCA_Logo.png" alt="Backcountry Access Logo"/>
-        <h3>Colorado's Free Beacon Parks</h3>
+        <h2>Colorado's Free Beacon Parks</h2>
         <p>Beacon parks provide an easy, convenient way to practice your skills. The parks are free, open to the public, simple, and always on and available. Each park may be a bit different but all are easy to use and have instructions. They have switches to turn on one or more buried transceivers.</p>
       </section>
       <MapContainer markers={markers}/>

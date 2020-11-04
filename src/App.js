@@ -1,58 +1,30 @@
-import React from 'react';
-import {Switch, Route, Link} from 'react-router-dom';
+import React, {Fragment} from 'react';
+import {Switch, Route} from 'react-router-dom';
 import './App.css';
+import Header from './components/Header'
+import ProfilePage from './components/ProfilePage'
 import LandingPage from './components/LandingPage'
 import BeaconParksPage from './components/BeaconParksPage'
 import CoursesPage from './components/CoursesPage'
 import SkiAreaPage from './components/SkiAreaPage'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faEdit,
-  faBullseye,
-  faSkiing
- } from '@fortawesome/free-solid-svg-icons';
+import ScrollToTop from './utils/ScrollToTop';
 
 function App() {
+
   return (
     <div className="App">
-      <div className="header">
-        <header className="main-header flex-container-center">
-          <div className="title">
-            <h1>AvyUpskill</h1>
-            <h2>Colorado's Backcountry Resource Center</h2>
-          </div>
-          <div className="stack-sections">
-            <a>Login</a>
-            <nav className="nav-bar">
-              <Link to="/beacon-parks">
-                <FontAwesomeIcon icon={faBullseye} 
-                  size="2x" 
-                  className="nav-icon" 
-                />
-              </Link>
-              <Link to="/courses">
-                <FontAwesomeIcon icon={faEdit} 
-                  size="2x" 
-                  className="nav-icon" 
-                />
-              </Link>
-              <Link to="/ski-areas">
-                <FontAwesomeIcon icon={faSkiing} 
-                  size="2x" 
-                  className="nav-icon" 
-                />
-              </Link>
-            </nav>
-          </div>
-        </header>
-      </div>
+      <Header />
       <main>
-        <Switch>
-          <Route path="/courses" render={ () => <CoursesPage /> } />
-          <Route path="/beacon-parks" render={ () => <BeaconParksPage /> } />
-          <Route path="/ski-areas" render={ () => <SkiAreaPage /> } />
-          <Route path="/" render={ () => <LandingPage /> } />
-        </Switch>
+        <Fragment>
+          <ScrollToTop/>
+          <Switch>
+            <Route path="/profile" render={ () => <ProfilePage /> } />
+            <Route path="/courses" render={ () => <CoursesPage /> } />
+            <Route path="/beacon-parks" render={ () => <BeaconParksPage /> } />
+            <Route path="/ski-areas" render={ () => <SkiAreaPage /> } />
+            <Route path="/" render={ () => <LandingPage /> } />
+          </Switch>
+        </Fragment>
       </main>
     </div>
   );
