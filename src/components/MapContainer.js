@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import ReactTooltip from 'react-tooltip';
 import {
   ComposableMap,
   ZoomableGroup,
@@ -11,7 +12,7 @@ import {geoAlbers} from "d3-geo";
 
 const geoUrl = "./co_w_counties.json";
 
-function MapContainer({markers}) {
+function MapContainer({markers, markerName, setMarkerName}) {
 
   return (
     <div className="MapContainer">
@@ -39,7 +40,6 @@ function MapContainer({markers}) {
                         console.log(geo.properties.NAME_2)
                       }
                     }
-                    // projection={projection}
                     style={{
                       default: {
                       fill: "#1a354b",
@@ -57,26 +57,42 @@ function MapContainer({markers}) {
               }
             </Geographies>
               {markers.map(({ name, coordinates, markerOffset }) => (
-                <Marker key={name} coordinates={coordinates}>
-                  <g
-                  fill="none"
-                  stroke="#FF5533"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  transform="translate(-12, -24)"
+                <>
+                  <Marker 
+                    key={name} 
+                    coordinates={coordinates}
+                    onClick={() => console.log(`${name}`)}
+                    onMouseEnter={() => {
+                      setMarkerName(`${name}`);
+                    }}
+                    onMouseLeave={() => {
+                      setMarkerName("");
+                    }}
                   >
-                    <circle cx="12" cy="10" r="3" />
-                    <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
-                  </g>
-                  <text
-                  textAnchor="middle"
-                  y={markerOffset}
-                  style={{ fontFamily: "system-ui", fill: "white" }}
-                  >
-                  {/* {name} */}
-                  </text>
-                </Marker>
+                    <g
+                    fill="none"
+                    stroke="#FF5533"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    transform="translate(-12, -24)"
+                    data-tip
+                    >
+                      <circle cx="12" cy="10" r="3" />
+                      <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.9 8 11.7z" />
+                    </g>
+                    <text
+                    textAnchor="middle"
+                    y={markerOffset}
+                    style={{ fontFamily: "system-ui", fill: "white" }}
+                    >
+                    {/* {name} */}
+                    </text>
+                  </Marker>
+                  <ReactTooltip type="warning" place="top" effect="float">
+                    Testing!
+                  </ReactTooltip>
+                </>
               ))}
             </ZoomableGroup>
         </ComposableMap> 
