@@ -3,13 +3,14 @@ import SkiAreaAddForm from './SkiAreaAddForm';
 import SkiAreaMapSection from './SkiAreaMapSection';
 import SkiAreaList from './SkiAreaList';
 import ReactTooltip from 'react-tooltip';
+import {areasURL} from '../constants'
 
 function SkiAreaPage() {
-  const [markerName, setMarkerName] = useState("")
-  const [selectedArea, setSelectedArea] = useState(null)
 
-  const handleClick = (_, selection) => {
+  const [showDetails, setDetails] = useState("map")
 
+  const handleClick = (_, choice) => {
+    setDetails(choice)
   }
 
   const markers = [
@@ -35,6 +36,17 @@ function SkiAreaPage() {
     },
   ]
 
+  const showChoice = () => {
+    switch (showDetails) {
+      case 'map': 
+        return <SkiAreaMapSection markers={markers}/>;
+      case 'list':
+        return <SkiAreaList areas={markers}/>;
+      case 'area':
+        return <SkiAreaAddForm markers={markers} type={"area"}/>;
+    }
+  }
+
   return (
     <div className="SkiAreaPage main-section">
       <section className="page-title beacon-title">
@@ -43,13 +55,11 @@ function SkiAreaPage() {
         <p>Not seeing an area you love? Join the community by creating an account - add areas, comments, ratings, or bookmark areas to explore back to later!</p>
       </section>
       <section>
-        <button onClick={(_) => handleClick(_, )}>See Map</button>
-        <button>See List</button>
-        <button>Add An Area</button>
+        <button className="button" onClick={(_) => handleClick(_, 'map')}>See Map</button>
+        <button className="button" onClick={(_) => handleClick(_, 'list')}>See List</button>
+        <button className="button" onClick={(_) => handleClick(_, 'area')}>Add An Area</button>
       </section>
-      <SkiAreaMapSection markers={markers}/>
-      <SkiAreaList markers={markers}/>
-      <SkiAreaAddForm markers={markers}/>
+      {showChoice()}
     </div>
   );
 }

@@ -1,86 +1,42 @@
 import React, {useEffect, useState} from 'react';
 import MapContainer from './MapContainer';
+import BeaconParkList from './BeaconParkList';
+import {parksURL} from '../constants';
 
 function BeaconParksPage() {
-  const baseURL = 'http://localhost:8000'
-  const beaconParksURL = `${baseURL}/beacon_parks/`
 
   const [beaconParks, setBeaconParks] = useState([])
-  const [markerName, setMarkerName] = useState("")
+  const [markers, setMarkers] = useState([])
 
-  // useEffect(() => {
-  //   fetchBeaconParkData()
-    // const fetchBeaconParkData = async () => {
-    //   try {
-    //     const response = await fetch(`${beaconParksURL}`);
-    //     const data = await response.json();
-    //     console.log(data)
-    //     setBeaconParks(data)
-    //   } catch(err) {
-    //     //error handling
-    //   }
-    // }
-    // fetchBeaconParkData()
-  // }, [])
+  useEffect(() => {
+    const fetchBeaconParkData = () => {
+      fetch(`${parksURL}`)
+        .then(response => response.json())
+        .then(data => {
+          setBeaconParks(data)
+          setParks(data)
+        })
+        .catch() 
+    }
+    fetchBeaconParkData()
+  }, [])
 
-  // const fetchBeaconParkData = () => {
-  //   fetch(`${beaconParksURL}`)
-  //     .then(response => response.json())
-  //     .then(data => console.log(data))
-  //     .then(data => setBeaconParks(data))
-  // }
-
-  const markers = [
-    { markerOffset: -30,
-      name: "Center of Colorado",
-      coordinates: [-105.59, 39.07]
-    },
-    { markerOffset: -30,
-      name: "Breckenridge Ski Resort",
-      coordinates: [-106.0667, 39.4803]
-    },
-    { markerOffset: -30,
-      name: "Keystone Ski Resort",
-      coordinates: [-105.9437, 39.6084]
-    },
-    { markerOffset: -30,
-      name: "Telluride Ski Resort",
-      coordinates: [-107.812286, 37.937492]
-    },
-    { markerOffset: -30,
-      name: "Arapahoe Basin Ski Resort",
-      coordinates: [-105.8719, 39.6425]
-    },
-    { markerOffset: -30,
-      name: "Aspen Highlands",
-      coordinates: [-106.8554, 39.1824]
-    },
-    { markerOffset: -30,
-      name: "Monarch Mountain Ski Resort",
-      coordinates: [-106.3320, 38.5121]
-    },
-    { markerOffset: -30,
-      name: "Powderhorn Ski Resort",
-      coordinates: [-108.15556, 39.06306]
-    },
-    { markerOffset: -30,
-      name: "Rocky Mountain National Park - Hidden Valley",
-      coordinates: [-105.3392, 39.6947]
-    },
-    { markerOffset: -30,
-      name: "Silverton Avalanche School",
-      coordinates: [-107.6639423, 37.8115015]
-    },
-    { markerOffset: -30,
-      name: "Steamboat Ski Resort",
-      coordinates: [-106.8045, 40.4572]
-    },
-    { markerOffset: -30,
-      name: "Wolf Creek Ski Resort",
-      coordinates: [-106.7932, 37.4724]
-    },
-  ]
-
+  const setParks = (parks) => {
+    let parksArray =[]
+    if (parks[0]) {
+      parks.map(park => {
+        let marker = {
+          markerOffset: -30,
+          name: `${park.name}`,
+          coordinates: [parseFloat(park.lon), parseFloat(park.lat)]
+        }
+        console.log(marker)
+        parksArray = [...parksArray, marker]
+      })
+      setMarkers(parksArray)
+    }
+    
+  }
 
   return (
     <div className="BeaconParks main-section">
@@ -89,7 +45,8 @@ function BeaconParksPage() {
         <h2>Colorado's Free Beacon Parks</h2>
         <p>Beacon parks provide an easy, convenient way to practice your skills. The parks are free, open to the public, simple, and always on and available. Each park may be a bit different but all are easy to use and have instructions. They have switches to turn on one or more buried transceivers.</p>
       </section>
-      <MapContainer markers={markers} setMarkerName={setMarkerName} markerName={markerName}/>
+      <MapContainer markers={markers} />
+      <BeaconParkList beaconParks={beaconParks} />
     </div>
   );
 }

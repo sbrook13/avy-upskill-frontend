@@ -3,7 +3,6 @@ import MapContainer from './MapContainer';
 import ReactTooltip from 'react-tooltip';
 
 function SkiAreaMapSection({markers}) {
-  const [markerName, setMarkerName] = useState("")
   const [selectedArea, setSelectedArea] = useState(null)
 
   const displayAreaDetails = () => {
@@ -42,7 +41,7 @@ function SkiAreaMapSection({markers}) {
 
   return (
       <section className="flex-container-center">
-        <MapContainer markers={markers} setMarkerName={setMarkerName} markerName={markerName}/>
+        <MapContainer markers={markers}/>
         <div className="ski-sidebar stack-sections space-between">
           {selectedArea ? displayAreaDetails(selectedArea) : displayDefault() }
         </div>

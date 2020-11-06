@@ -1,29 +1,71 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faEdit,
   faBullseye,
-  faSkiing
+  faSkiing,
+  faUser
  } from '@fortawesome/free-solid-svg-icons';
 
-function Header() {
+function Header({user, setUser}) {
   
   const hoverIcon = (event, selection) => {
     const navBarName = document.querySelector('#nav-name')
     navBarName.innerHTML = `${selection}`
   }
 
+  const handleSignupClick = () => {
+    console.log("signup")
+  }
+
+  const handleLoginClick = () => {
+    console.log("login")
+  }
+
+  const handleLogoutClick = () => {
+    console.log("logout")
+    setUser(null)
+    localStorage.clear()
+    window.location.href = '/'
+  }
+
+
   return (
     <div className="header">
       <header className="main-header">
         <div className="title">
-          <h1>AvyUpskill</h1>
+          <h1 data-tip='' data-for="title">AvyUpskill</h1>
+          
           <h2>Colorado's Backcountry Resource Center</h2>
         </div>
         <div className="stack-sections right-align">
-          <a>Login / Create User</a>
+          {user ? 
+            <button className="login-button" onClick={() => handleLogoutClick()}>Logout</button> : 
+            (<div>
+              <Link to="/login">
+                <button className="login-button" onClick={()=> handleLoginClick()}>Login</button>
+              </Link>
+              <Link to="/signup">
+                <button className="login-button" onClick={()=> handleSignupClick()}>Signup</button>
+              </Link>
+            </div>
+            )
+          }
           <nav className="nav-bar">
+          <ReactTooltip id='title'>this is the title</ReactTooltip>
+            {user ? 
+            <Link to="/profile">
+              <FontAwesomeIcon icon={faUser} 
+                size="2x" 
+                className="nav-icon" 
+                onMouseEnter={(_) => hoverIcon(_,"Profile")} 
+                onMouseLeave={(_) => hoverIcon(_, "")}
+              />
+            </Link> :
+            null
+            }
             <Link to="/beacon-parks">
               <FontAwesomeIcon icon={faBullseye} 
                 size="2x" 
@@ -40,7 +82,7 @@ function Header() {
                 onMouseLeave={(_) => hoverIcon(_, "")}
               />
             </Link>
-            <Link to="/ski-areas">
+            <Link to="/backcountry-zones">
               <FontAwesomeIcon icon={faSkiing} 
                 size="2x" 
                 className="nav-icon" 

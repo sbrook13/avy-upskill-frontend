@@ -30,7 +30,7 @@ p {
 section {
   width: 100%; }
 
-button {
+.button {
   padding: 1rem;
   border-radius: 4px;
   color: white;
@@ -39,11 +39,23 @@ button {
   margin-left: 1rem;
   margin-right: 1rem;
   min-width: 10rem; }
-  button button:focus {
-    outline: none; }
+
+.login-button {
+  padding: .5rem;
+  font-size: 12px;
+  border-radius: 4px;
+  color: white;
+  background-color: #5a778c;
+  border: none;
+  margin-left: .2rem;
+  margin-right: .2rem;
+  min-width: 5rem; }
+
+button:focus {
+  outline: none; }
 
 button:hover {
-  background-color: #5a778c; }
+  background-color: #FF5533; }
 
 .App {
   color: #1a354b;
@@ -128,6 +140,9 @@ button:hover {
   .nav-bar a:visited {
     color: #1a354b;
     text-decoration: none; }
+  .nav-bar a:hover {
+    color: #FF5533;
+    text-decoration: none; }
 
 .nav-icon {
   padding-left: 1rem; }
@@ -163,6 +178,16 @@ button:hover {
   z-index: 1;
   margin-top: 9.6rem;
   width: 100%; }
+
+.login-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 15rem;
+  width: 100%;
+  height: 100vh; }
 
 .landing-page {
   background-image: url("https://i.imgur.com/tb7hq68.jpg");
@@ -206,14 +231,16 @@ button:hover {
     outline: none; }
 
 form input {
-  padding: .25rem;
-  padding-left: 1rem;
+  padding: .5rem;
   margin: .25rem;
   border-radius: 4px;
   border: 1px #1a354b solid; }
 
 form input:focus {
   outline: none; }
+
+form label {
+  margin-top: .5rem; }
 
 .course-list {
   display: flex;
