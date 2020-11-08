@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 
-function SkiAreaList({areas}) {
+function BeaconParkList({beaconParks}) {
 
   const handleClick = (_, selection) => {
 
   }
 
-  const listItems = () => {
-    return areas.map(area => {
+  const listBeaconParks = () => {
+    return beaconParks.map(park => {
       return (
         <div className="list-item">
-          <h4>{area.name}</h4>
-          <p>{area.description}</p>
+          <h4>{park.name}</h4>
+          <p>{park.description}</p>
         </div>
       )
     })
@@ -19,9 +19,9 @@ function SkiAreaList({areas}) {
 
   return (
     <div className="stack-sections">
-      {listItems()}
+      {listBeaconParks()}
     </div>
   );
 }
 
-export default SkiAreaList;
+export default BeaconParkList;

@@ -16,19 +16,19 @@ function Footer() {
     <div className="footer">
       <div className="stack-sections">
         <h4>AvyUpskill 2020</h4>
-        <p>Created by Shelley Brook</p>
-        <a href="https://www.linkedin.com/in/sbrook13/" target="_blank">Contact</a>
-      </div>
-      <div className="right-align">
-        <a href="mailto:sbrook13@gmail.com">
-          <img src="https://assets.stickpng.com/thumbs/58485698e0bb315b0f7675a8.png" alt="email icon"/>
-        </a>
-        <a href="https://www.linkedin.com/in/sbrook13/" target="_blank">
-          <img src="https://www.edigitalagency.com.au/wp-content/uploads/new-linkedin-logo-white-black-png.png" alt="linkedin icon"/>
-        </a>
-        <a href="https://github.com/sbrook13" target="_blank">
-          <img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="GitHub icon"/>
-        </a>
+        <p>Created by:</p> 
+        <h4>Shelley Brook</h4>
+        <p>
+          <a 
+          href="https://www.linkedin.com/in/sbrook13/" 
+          target="_blank">
+          Email</a> |&nbsp;
+          <a 
+          href="mailto:sbrook13@gmail.com" 
+          target="_blank">
+          LinkedIn
+          </a>
+        </p>
       </div>
     </div>
   );
