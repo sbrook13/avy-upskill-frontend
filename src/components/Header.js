@@ -9,7 +9,7 @@ import {
   faUser
  } from '@fortawesome/free-solid-svg-icons';
 
-function Header({user, setUser}) {
+function Header({user, setUser, history}) {
   
   const hoverIcon = (event, selection) => {
     const navBarName = document.querySelector('#nav-name')
@@ -45,10 +45,10 @@ function Header({user, setUser}) {
             <button className="login-button" onClick={() => handleLogoutClick()}>Logout</button> : 
             (<div>
               <Link to="/login">
-                <button className="login-button" onClick={()=> handleLoginClick()}>Login</button>
+                <button className="login-button" >Login</button>
               </Link>
               <Link to="/signup">
-                <button className="login-button" onClick={()=> handleSignupClick()}>Signup</button>
+                <button className="login-button" >Signup</button>
               </Link>
             </div>
             )
@@ -60,6 +60,7 @@ function Header({user, setUser}) {
               <FontAwesomeIcon icon={faUser} 
                 size="2x" 
                 className="nav-icon" 
+                role="profile link"
                 onMouseEnter={(_) => hoverIcon(_,"Profile")} 
                 onMouseLeave={(_) => hoverIcon(_, "")}
               />
@@ -70,6 +71,7 @@ function Header({user, setUser}) {
               <FontAwesomeIcon icon={faBullseye} 
                 size="2x" 
                 className="nav-icon" 
+                role="beacon parks link"
                 onMouseEnter={(_) => hoverIcon(_,"Beacon Parks")} 
                 onMouseLeave={(_) => hoverIcon(_, "")}
               />
@@ -78,6 +80,7 @@ function Header({user, setUser}) {
               <FontAwesomeIcon icon={faEdit} 
                 size="2x" 
                 className="nav-icon" 
+                role="courses link"
                 onMouseEnter={(_) => hoverIcon(_,"Courses")} 
                 onMouseLeave={(_) => hoverIcon(_, "")}
               />
@@ -86,6 +89,7 @@ function Header({user, setUser}) {
               <FontAwesomeIcon icon={faSkiing} 
                 size="2x" 
                 className="nav-icon" 
+                role="backcountry areas link"
                 onMouseEnter={(_) => hoverIcon(_,"Backcountry Zones")} 
                 onMouseLeave={(_) => hoverIcon(_, "")}
               />

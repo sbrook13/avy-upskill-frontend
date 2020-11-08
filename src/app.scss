@@ -1,6 +1,7 @@
 @import 'meyer-reset.css';
 
 $base-color: white;
+$light-color: #b2c5d23e;
 $dark-color: #1a354b;
 $medium-color: #5a778c;
 $highlight: #FF5533;
@@ -16,11 +17,6 @@ $xxxxx: 4rem;
 $xxxxxx: 5rem;
 $xxxxxxx: 7rem;
 $xxxxxxxx: 8rem;
-
-.co-map {
-  width: 800px;
-  height: 600px;
-}
 
 path:focus {
   outline: none;
@@ -52,7 +48,11 @@ p {
 }
 
 section {
-  width: 100%;
+  max-width: 100%;
+}
+
+.bold {
+  font-weight: 900;
 }
 
 .button {
@@ -61,8 +61,8 @@ section {
   color: white;
   background-color: $dark-color;
   border: none;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 1rem;
+  // margin-right: 1rem;
   min-width: 10rem;
 }
 
@@ -76,6 +76,15 @@ section {
   margin-left: .2rem;
   margin-right: .2rem;
   min-width: 5rem;
+}
+.page-number {
+  padding: .5rem;
+  border-radius: 4px;
+  color: white;
+  background-color: $dark-color;
+  border: none;
+  margin: .5rem;
+  min-width: 2rem;
 }
 
 button:focus {
@@ -91,8 +100,9 @@ button:hover {
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   flex-direction: column;
-  min-width: 100vw;
+  width: 100%;
   min-height: 100vh;
+  box-sizing: border-box ;
 }
 
 .header {
@@ -108,10 +118,6 @@ button:hover {
 }
 
 .footer {
-  // position: fixed;
-  // left: 0;
-  // bottom: 0;
-  // width: 100%;
   background-color: $medium-color;
   min-height: 4rem;
   margin-top: 2rem;
@@ -119,16 +125,20 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  line-height: 16px;
   h4{
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
+    color: white;
   }
   p {
     font-size: 12px;
-    font-weight: 900;
+    color: white;
+    letter-spacing: 2px;
   }
   a {
     font-size: 12px;
+    color: white;
   }
   img {
     max-width: 30px;
@@ -155,6 +165,7 @@ button:hover {
   justify-content: flex-start;
   flex-direction: column;
 }
+
 .right-align {
   align-items: flex-end;
 }
@@ -170,7 +181,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 100vw;
+  width: 100%;
   margin: 1.5rem 3rem 2rem 3rem;
   border-bottom: $dark-color 1.75px solid;
 }
@@ -249,20 +260,27 @@ button:hover {
   height: 100vh;
 }
 
-.landing-page {
-  background-image: url("https://i.imgur.com/tb7hq68.jpg");
-  background-size: cover;
-  // background-image: url("https://i.imgur.com/tb7hq68.jpg");
+.co-map {
+  width: 550px;
+  height: 400px;
+}
+
+.MapContainer {
+  text-align: left;
+  p {
+    padding-left: 2rem;
+  }
+}
+.min-height{
+  height: 3rem;
 }
 
 .course-type {
-  width: 95vw;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  // grid-gap: 7px;
+  grid-gap: 8px;
   text-align: center;
-  padding-left: 1rem;
-  padding-right: 1rem;
   p {
     margin: .5rem;
   }
@@ -273,14 +291,26 @@ button:hover {
   justify-content: flex-start;
   align-items: flex-start;
   position: relative;
-  width: 100%;
-  img {
+  .image-stack {
     max-width: 32%;
     position: relative;
-    box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    img {
+      width: 100%;
+      box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39);
+      margin-bottom: 2rem;
+    }
   }
   .course-list {
-    width: 65%
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
 
@@ -315,7 +345,27 @@ form {
     margin-top: .5rem;
   }
 }
-
+.details-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  line-height: 45px;
+  background-color: $light-color;
+  border-radius: 4px;
+  padding: 2rem;
+  width: 70%;
+  box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39);
+  h3 {
+    margin-bottom: 0;
+  }
+}
+.go-back {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%
+}
 .course-list {
   display: flex;
   justify-content: flex-start;
@@ -328,27 +378,30 @@ form {
 
 .list-item {
   border: 1px $dark-color solid;
-  padding: 1rem;
+  padding: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin: .5rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   position: relative;
   width: 90%;
-  min-height: 2.25rem;
+  min-height: 2.5rem;
   text-align: left;
   .class-title {
-    width: 40%;
+    width: 27%;
   }
   .course-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
+    width: 73%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     text-align: left;
   }
 }
 
-.course-item:hover {
+.list-item:hover {
   background-color: $medium-color;
   color: white;
 }

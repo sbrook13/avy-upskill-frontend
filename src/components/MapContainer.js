@@ -8,14 +8,16 @@ import {
   Markers,
   Marker,
 } from "react-simple-maps";
-import {geoAlbers} from "d3-geo";
 
 const geoUrl = "./co_w_counties.json";
 
-function MapContainer({markers}) {
+function MapContainer({markers, type, setSelected}) {
 
   const [markerName, setMarkerName] = useState("")
-  const [selected, setSelected] = useState("")
+
+  const setArea = (event, selection) => {
+    setSelected(selection)
+  }
 
   const setMarkers = () => {
     return markers.map(marker => {
@@ -49,51 +51,57 @@ function MapContainer({markers}) {
   }
 
   return (
-    <div className="MapContainer">
-        <ComposableMap 
-          className="co-map" 
-          projection="geoAlbers"
-          projectionConfig={{ 
-            scale: 7000,
-            rotate: [100, .5, 4],
-          }}
-        > 
-          <ZoomableGroup 
-            center={[-105.59, 39.07]}
-          >
-            <Geographies geography={geoUrl}>
-              {({geographies}) =>
-              geographies.map((geo) => ( 
-                <>
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    stroke="#28465b"
-                    onClick={
-                      () => {
-                        console.log(geo.properties.NAME_2)
+    <div className="MapContainer stack-sections" >
+      <div className="stack-sections min-height">
+        <p>Click to learn more about {type} at:</p>
+        <p className="bold">{markerName}</p>
+      </div>
+      <div>
+          <ComposableMap 
+            className="co-map" 
+            projection="geoAlbers"
+            projectionConfig={{ 
+              scale: 8100,
+              rotate: [100.5, 1.4, 4],
+            }}
+          > 
+            <ZoomableGroup 
+              center={[-105.59, 39.07]}
+            >
+              <Geographies geography={geoUrl}>
+                {({geographies}) =>
+                geographies.map((geo) => ( 
+                  <>
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      stroke="#28465b"
+                      onClick={
+                        () => {
+                          console.log(geo.properties.NAME_2)
+                        }
                       }
-                    }
-                    style={{
-                      default: {
-                      fill: "#1a354b",
-                      },
-                      hover: {
-                      fill: "#1a354b",
-                      },
-                      pressed: {
-                      fill: "#4c93ce",
-                      }
-                    }}
-                  />
-                </>
-              ))
-              }
-            </Geographies>
-            {setMarkers()}
-            <ReactTooltip>{markerName}</ReactTooltip>
-          </ZoomableGroup>
-        </ComposableMap> 
+                      style={{
+                        default: {
+                        fill: "#1a354b",
+                        },
+                        hover: {
+                        fill: "#1a354b",
+                        },
+                        pressed: {
+                        fill: "#4c93ce",
+                        }
+                      }}
+                    />
+                  </>
+                ))
+                }
+              </Geographies>
+              {setMarkers()}
+              <ReactTooltip>{markerName}</ReactTooltip>
+            </ZoomableGroup>
+          </ComposableMap> 
+      </div>
     </div>
   );
 }

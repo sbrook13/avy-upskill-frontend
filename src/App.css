@@ -1,8 +1,4 @@
 @import url(meyer-reset.css);
-.co-map {
-  width: 800px;
-  height: 600px; }
-
 path:focus {
   outline: none; }
 
@@ -28,7 +24,10 @@ p {
   line-height: 20px; }
 
 section {
-  width: 100%; }
+  max-width: 100%; }
+
+.bold {
+  font-weight: 900; }
 
 .button {
   padding: 1rem;
@@ -36,8 +35,7 @@ section {
   color: white;
   background-color: #1a354b;
   border: none;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin: 1rem;
   min-width: 10rem; }
 
 .login-button {
@@ -51,6 +49,15 @@ section {
   margin-right: .2rem;
   min-width: 5rem; }
 
+.page-number {
+  padding: .5rem;
+  border-radius: 4px;
+  color: white;
+  background-color: #1a354b;
+  border: none;
+  margin: .5rem;
+  min-width: 2rem; }
+
 button:focus {
   outline: none; }
 
@@ -62,8 +69,9 @@ button:hover {
   font-family: 'Source Sans Pro', sans-serif;
   display: flex;
   flex-direction: column;
-  min-width: 100vw;
-  min-height: 100vh; }
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box; }
 
 .header {
   width: 100%;
@@ -81,15 +89,19 @@ button:hover {
   padding: 1rem;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  line-height: 16px; }
   .footer h4 {
-    font-size: 14px;
-    font-weight: 400; }
+    font-size: 16px;
+    font-weight: 400;
+    color: white; }
   .footer p {
     font-size: 12px;
-    font-weight: 900; }
+    color: white;
+    letter-spacing: 2px; }
   .footer a {
-    font-size: 12px; }
+    font-size: 12px;
+    color: white; }
   .footer img {
     max-width: 30px;
     max-height: 30px;
@@ -124,7 +136,7 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  width: 100vw;
+  width: 100%;
   margin: 1.5rem 3rem 2rem 3rem;
   border-bottom: #1a354b 1.75px solid; }
 
@@ -189,17 +201,24 @@ button:hover {
   width: 100%;
   height: 100vh; }
 
-.landing-page {
-  background-image: url("https://i.imgur.com/tb7hq68.jpg");
-  background-size: cover; }
+.co-map {
+  width: 550px;
+  height: 400px; }
+
+.MapContainer {
+  text-align: left; }
+  .MapContainer p {
+    padding-left: 2rem; }
+
+.min-height {
+  height: 3rem; }
 
 .course-type {
-  width: 95vw;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  text-align: center;
-  padding-left: 1rem;
-  padding-right: 1rem; }
+  grid-gap: 8px;
+  text-align: center; }
   .course-type p {
     margin: .5rem; }
 
@@ -207,14 +226,25 @@ button:hover {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  position: relative;
-  width: 100%; }
-  .split-section img {
+  position: relative; }
+  .split-section .image-stack {
     max-width: 32%;
     position: relative;
-    box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39); }
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column; }
+    .split-section .image-stack img {
+      width: 100%;
+      box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39);
+      margin-bottom: 2rem; }
   .split-section .course-list {
-    width: 65%; }
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem; }
 
 .search-bar {
   display: flex;
@@ -242,6 +272,26 @@ form input:focus {
 form label {
   margin-top: .5rem; }
 
+.details-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  line-height: 45px;
+  background-color: #b2c5d23e;
+  border-radius: 4px;
+  padding: 2rem;
+  width: 70%;
+  box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39); }
+  .details-card h3 {
+    margin-bottom: 0; }
+
+.go-back {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%; }
+
 .course-list {
   display: flex;
   justify-content: flex-start;
@@ -252,24 +302,27 @@ form label {
 
 .list-item {
   border: 1px #1a354b solid;
-  padding: 1rem;
+  padding: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin: .5rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   position: relative;
   width: 90%;
-  min-height: 2.25rem;
+  min-height: 2.5rem;
   text-align: left; }
   .list-item .class-title {
-    width: 40%; }
+    width: 27%; }
   .list-item .course-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
+    width: 73%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     text-align: left; }
 
-.course-item:hover {
+.list-item:hover {
   background-color: #5a778c;
   color: white; }
 

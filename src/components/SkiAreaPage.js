@@ -1,48 +1,50 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import SkiAreaAddForm from './SkiAreaAddForm';
-import SkiAreaMapSection from './SkiAreaMapSection';
 import SkiAreaList from './SkiAreaList';
-import ReactTooltip from 'react-tooltip';
+import MapContainer from './MapContainer';
+import {setMarkersFromBackend, handleSetStateOnClick, parseJSON} from '../utils/functions'
 import {areasURL} from '../constants'
 
 function SkiAreaPage() {
 
-  const [showDetails, setDetails] = useState("map")
+  const [viewType, setViewType] = useState("map")
+  const [backcountryAreas, setBackcountryAreas] = useState([])
+  const [markers, setMarkers] = useState([])
+  const [selected, setSelected] = useState(null)
 
-  const handleClick = (_, choice) => {
-    setDetails(choice)
-  }
+  useEffect(() => {
+    const fetchAreasData = () => {
+      fetch(`${areasURL}`)
+        .then(parseJSON)
+        .then(data => {
+          setBackcountryAreas(data)
+          setMarkersFromBackend(data)
+        })
+        .catch() 
+    }
+    fetchAreasData()
+  }, [])
 
-  const markers = [
-    { markerOffset: -30,
-      name: "Berthoud Pass",
-      coordinates: [-105.59, 39.07],
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    },
-    { markerOffset: -30,
-      name: "Loveland Pass",
-      coordinates: [-106.0667, 39.4803],
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    },
-    { markerOffset: -30,
-      name: "Baldy Mountain",
-      coordinates: [-105.8719, 39.6425],
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    },
-    { markerOffset: -30,
-      name: "Hidden Valley",
-      coordinates: [-105.3392, 39.6947],
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    },
-  ]
+  // const setMapMarkers = (allPoints) => {
+  //   let cumulativeArray =[]
+  //   allPoints.map(point => {
+  //     let marker = {
+  //       markerOffset: -30,
+  //       name: `${point.name}`,
+  //       coordinates: [point.lon, point.lat]
+  //     }
+  //     cumulativeArray = [...cumulativeArray, marker]
+  //   })
+  //   setMarkers(cumulativeArray)
+  // }
 
   const showChoice = () => {
-    switch (showDetails) {
+    switch (viewType) {
       case 'map': 
-        return <SkiAreaMapSection markers={markers}/>;
+        return <MapContainer markers={markers} type={"skiing"} setSelected={setSelected}/>;
       case 'list':
         return <SkiAreaList areas={markers}/>;
-      case 'area':
+      case 'add':
         return <SkiAreaAddForm markers={markers} type={"area"}/>;
     }
   }
@@ -55,9 +57,9 @@ function SkiAreaPage() {
         <p>Not seeing an area you love? Join the community by creating an account - add areas, comments, ratings, or bookmark areas to explore back to later!</p>
       </section>
       <section>
-        <button className="button" onClick={(_) => handleClick(_, 'map')}>See Map</button>
-        <button className="button" onClick={(_) => handleClick(_, 'list')}>See List</button>
-        <button className="button" onClick={(_) => handleClick(_, 'area')}>Add An Area</button>
+        <button className="button" onClick={(_) => handleSetStateOnClick(_, setViewType, 'map')}>See Map</button>
+        <button className="button" onClick={(_) => handleSetStateOnClick(_, setViewType, 'list')}>See List</button>
+        <button className="button" onClick={(_) => handleSetStateOnClick(_, setViewType, 'add')}>Add An Area</button>
       </section>
       {showChoice()}
     </div>

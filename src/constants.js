@@ -8,8 +8,11 @@ export const coursesURL = `${baseURL}/courses`;
 export const parksURL = `${baseURL}/beacon_parks`;
 export const areasURL = `${baseURL}/areas`;
 
-
 export const authHeaders = { 
   'Content-Type': 'application/json',
   'Authorization': `Bearer ${localStorage.token}`
+}
+
+export const coCities = {
+
 }

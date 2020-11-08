@@ -1,26 +1,36 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CourseList from './CourseList';
+import {setMarkersFromBackend, handleSetStateOnClick, parseJSON} from '../utils/functions'
+import {coursesURL} from '../constants'
+import CourseDetail from './CourseDetails';
 
 function CoursesPage() {
   
   const [courses, setCourses] = useState([])
+  const [providers, setProviders] = useState([])
+  const [selected, setSelected] = useState(null)
+  const [filteredList, setFilteredList] = useState([])
+  const [coursesToDisplay, setCoursesToDisplay] = useState([])
 
-  // useEffect(() => {
-  //   const fetchCourseData = async () => {
-  //     try {
-  //       const response = await fetch(`${geocodeURL}/json?address=${convertedAddress}&${geocodeApiKey}`);
-  //       const data = await response.json();
-  //       console.log(data)
-  //     } catch(err) {
-  //       //error handling
-  //     }
-  //   }
-  //   fetchCourseData()
-  // }, [])
+  useEffect(() => {
+    const fetchAreasData = () => {
+      fetch(`${coursesURL}`)
+        .then(parseJSON)
+        .then(data => {
+          setCourses(data)
+          findProviders(data)
+          setFilteredList(data)
+        })
+        .catch() 
+    }
+    fetchAreasData()
+  }, [])
 
-  // const displayCourses = () => {
-  //   console.log('courses')
-  // }
+  const showAllCourses = () => {
+    setFilteredList(courses)
+    setSelected(null)
+  }
+
 
   const courseTypes = [
     {type: "Avalanche Rescue",
@@ -53,17 +63,51 @@ function CoursesPage() {
     })
   }
 
+  let allProviders = ["All"]
+  const findProviders = (courses) => {
+    return courses.map(course => {
+      if (!allProviders.find(provider => provider === course.provider)) {
+        allProviders = [...allProviders, course.provider]
+        setProviders(allProviders.sort())
+      }
+    })
+  }
+
   return (
     <div className="CoursesPage main-section">
       <section className="page-title">
-      <img src="https://payettepowderguides.com/assets/images/page/aiare-logo.png" alt="Avalanche Research + Education logo"/>
+      <a href="https://avtraining.org/" target="_blank">
+        <img src="https://payettepowderguides.com/assets/images/page/aiare-logo.png" alt="Avalanche Research + Education logo"/>
+      </a>
       <h2>Prepare Yourself for Backcountry Travel</h2>
         <p></p>
         <div className="course-type">
           {showCourseTypes(courseTypes)}
         </div>
       </section>
-      <CourseList />
+      <section className="split-section">
+        <div className="image-stack">
+          <img intrinsicsize="538 x 749" src="https://i.imgur.com/7G7squA.jpg" alt="compression test"/>
+          <img src="https://i.imgur.com/24LmdkV.jpg" alt="three students in the backcountry assessing the terrain"/>
+        </div>
+        <div className="course-list">
+          { courses ? 
+            <CourseList 
+              courses={courses}  
+              providers={providers} 
+              selected={selected} 
+              setSelected={setSelected} 
+              filteredList={filteredList}
+              setFilteredList={setFilteredList}
+              coursesToDisplay={coursesToDisplay}
+              setCoursesToDisplay={setCoursesToDisplay}
+              showAllCourses={showAllCourses}
+            /> 
+            : 
+            null
+          }
+        </div>
+      </section>
     </div>
   );
 }
