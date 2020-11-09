@@ -22,7 +22,7 @@ function CourseFilter(props) {
     } else {
       setFunction(input)
     }
-    setTimeout(() => {filterCourses()},500)
+    filterCourses()
   }
 
   const filterCourses = () => {
@@ -31,6 +31,7 @@ function CourseFilter(props) {
     if (selectedCourseType === null && selectedProvider === null){
       showAllCourses()
     } else {
+      showAllCourses()
       const filteredCourses = filteredList.filter(course => course.class_type === selectedCourseType)
       setFilteredList(filteredCourses)
       console.log("after filter", filteredCourses)

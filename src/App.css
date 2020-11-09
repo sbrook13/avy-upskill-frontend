@@ -17,7 +17,7 @@ h3 {
 
 h4 {
   font-size: 1.25rem;
-  font-weight: 900; }
+  font-weight: 600; }
 
 p {
   font-size: 1rem;
@@ -27,7 +27,7 @@ section {
   max-width: 100%; }
 
 .bold {
-  font-weight: 900; }
+  font-weight: 600; }
 
 .button {
   padding: 1rem;
@@ -120,7 +120,7 @@ button:hover {
 
 .stack-sections {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column; }
 
 .right-align {
@@ -166,19 +166,35 @@ button:hover {
   align-items: flex-end; }
 
 .page-title {
-  margin: 2rem; }
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  min-height: 21rem; }
   .page-title h2, .page-title p {
     margin-top: 1rem;
     margin-bottom: 2rem;
-    margin-left: 6rem;
-    margin-right: 6rem; }
+    margin-left: 10rem;
+    margin-right: 10rem; }
   .page-title img {
     max-width: 300px; }
 
 .beacon-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #5a778c;
   padding: 1rem;
   color: white; }
+  .beacon-title h1 {
+    font-size: 4rem;
+    margin: 1.5rem; }
+
+.beacon-list {
+  margin-left: 3.5rem;
+  margin-top: 3.5rem;
+  align-items: flex-start;
+  line-height: 20px; }
 
 .main-section {
   display: flex;
@@ -190,6 +206,20 @@ button:hover {
   z-index: 1;
   margin-top: 9.6rem;
   width: 100%; }
+
+.landing-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 11.25rem;
+  width: 100%; }
+
+.image-bar img {
+  width: 25%; }
 
 .login-form {
   display: flex;
@@ -210,8 +240,10 @@ button:hover {
   .MapContainer p {
     padding-left: 2rem; }
 
-.min-height {
-  height: 3rem; }
+.map-nav {
+  height: 3rem;
+  justify-content: flex-start;
+  margin-top: 1rem; }
 
 .course-type {
   width: 100%;
@@ -223,8 +255,9 @@ button:hover {
     margin: .5rem; }
 
 .split-section {
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   position: relative; }
   .split-section .image-stack {
@@ -241,7 +274,7 @@ button:hover {
     width: 65%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin-left: 1rem;
     margin-right: 1rem; }
@@ -272,6 +305,41 @@ form input:focus {
 form label {
   margin-top: .5rem; }
 
+.add-form {
+  width: 50%; }
+  .add-form .text-input {
+    height: 7rem; }
+
+.current-weather {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  line-height: 45px;
+  background-color: #b2c5d23e;
+  border-radius: 4px;
+  padding: 2rem;
+  margin: 1rem;
+  width: 20%;
+  line-height: 40px;
+  box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39); }
+  .current-weather .weather-section {
+    padding-top: .75rem;
+    padding-bottom: .75rem; }
+  .current-weather .small-title {
+    font-size: 15px; }
+  .current-weather h2 {
+    font-size: 2.5rem; }
+  .current-weather h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 30px; }
+  .current-weather p {
+    font-size: 11px;
+    line-height: 14px; }
+  .current-weather h4 {
+    font-weight: 600; }
+
 .details-card {
   display: flex;
   justify-content: flex-start;
@@ -294,7 +362,7 @@ form label {
 
 .course-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column; }
   .course-list h3 {
@@ -307,24 +375,40 @@ form label {
   padding-right: 1rem;
   margin: .5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   position: relative;
   width: 90%;
   min-height: 2.5rem;
   text-align: left; }
   .list-item .class-title {
-    width: 27%; }
+    width: 25%; }
   .list-item .course-details {
-    width: 73%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    width: 75%;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-gap: 5px;
     text-align: left; }
+    .list-item .course-details p {
+      font-size: 12px;
+      line-height: 14px; }
 
 .list-item:hover {
   background-color: #5a778c;
   color: white; }
+
+.area-cards .description {
+  font-size: 11px;
+  line-height: 14px;
+  margin: 1rem;
+  width: 75%; }
+
+.area-cards .area-title {
+  margin: .5rem;
+  width: 24%; }
+
+.area-cards a {
+  font-size: 11px; }
 
 .menu-button {
   position: relative;

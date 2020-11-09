@@ -15,7 +15,6 @@ export function loginUser(e, setUser, userInfo, history){
       if(result.status == 200){
         setToken(result.token)
         setUser(result.username)
-        history.push('/')
       } else {
         console.log(result[0])
       }      

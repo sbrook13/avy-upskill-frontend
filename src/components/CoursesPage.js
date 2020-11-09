@@ -20,6 +20,7 @@ function CoursesPage() {
           setCourses(data)
           findProviders(data)
           setFilteredList(data)
+          setCoursesToDisplay(data.slice(0,15))
         })
         .catch() 
     }
@@ -58,7 +59,7 @@ function CoursesPage() {
           <p>{course.duration}</p>
           <p>{course.description}</p>
           <p>{course.prereqs}</p>
-      </div>
+        </div>
       )
     })
   }

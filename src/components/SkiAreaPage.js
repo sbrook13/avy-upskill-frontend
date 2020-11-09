@@ -18,32 +18,19 @@ function SkiAreaPage() {
         .then(parseJSON)
         .then(data => {
           setBackcountryAreas(data)
-          setMarkersFromBackend(data)
+          setMarkersFromBackend(data, setMarkers)
         })
         .catch() 
     }
     fetchAreasData()
   }, [])
 
-  // const setMapMarkers = (allPoints) => {
-  //   let cumulativeArray =[]
-  //   allPoints.map(point => {
-  //     let marker = {
-  //       markerOffset: -30,
-  //       name: `${point.name}`,
-  //       coordinates: [point.lon, point.lat]
-  //     }
-  //     cumulativeArray = [...cumulativeArray, marker]
-  //   })
-  //   setMarkers(cumulativeArray)
-  // }
-
-  const showChoice = () => {
+  const showViewChoice = () => {
     switch (viewType) {
       case 'map': 
-        return <MapContainer markers={markers} type={"skiing"} setSelected={setSelected}/>;
+        return <MapContainer markers={markers} subtitle={"Click to learn more about skiing at:"} setSelected={setSelected}/>;
       case 'list':
-        return <SkiAreaList areas={markers}/>;
+        return <SkiAreaList areas={backcountryAreas}/>;
       case 'add':
         return <SkiAreaAddForm markers={markers} type={"area"}/>;
     }
@@ -52,16 +39,35 @@ function SkiAreaPage() {
   return (
     <div className="SkiAreaPage main-section">
       <section className="page-title beacon-title">
+        <h1>Beacon✓  Probe✓  Shovel✓</h1>
         <h2>Beginner Backcountry Zones</h2>
-        <p>Looking for easy-to-access low angle terrain to explore backcountry skiing? See the map below for user recommendations!</p>
-        <p>Not seeing an area you love? Join the community by creating an account - add areas, comments, ratings, or bookmark areas to explore back to later!</p>
+        <p>Looking for easy-to-access low angle terrain to explore backcountry skiing? See the map below for user recommendations!
+          Not seeing an area you love? Join the community by creating an account - add areas, comments, ratings, or bookmark areas to explore back to later!</p>
       </section>
       <section>
-        <button className="button" onClick={(_) => handleSetStateOnClick(_, setViewType, 'map')}>See Map</button>
-        <button className="button" onClick={(_) => handleSetStateOnClick(_, setViewType, 'list')}>See List</button>
-        <button className="button" onClick={(_) => handleSetStateOnClick(_, setViewType, 'add')}>Add An Area</button>
+        <button 
+          className="button" 
+          style={{backgroundColor: viewType === 'map' ? "#FF5533" : "#1a354b"}}
+          onClick={(_) => handleSetStateOnClick(_, setViewType, 'map')}
+        >
+          See Map
+        </button>
+        <button 
+          className="button"
+          style={{backgroundColor: viewType === 'list' ? "#FF5533" : "#1a354b"}} 
+          onClick={(_) => handleSetStateOnClick(_, setViewType, 'list')}
+        >
+          See List
+        </button>
+        <button 
+          className="button" 
+          style={{backgroundColor: viewType === 'add' ? "#FF5533" : "#1a354b"}}
+          onClick={(_) => handleSetStateOnClick(_, setViewType, 'add')}
+        >
+          Add An Area
+        </button>
       </section>
-      {showChoice()}
+      {showViewChoice()}
     </div>
   );
 }
