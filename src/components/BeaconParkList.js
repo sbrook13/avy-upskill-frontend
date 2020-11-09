@@ -5,22 +5,27 @@ function BeaconParkList({beaconParks}) {
   const handleClick = (_, selection) => {
 
   }
-
+  
   const listBeaconParks = () => {
-    return beaconParks.map(park => {
+    const sortedList = beaconParks.sort(function(a, b) {
+      let keyA = a.name,
+        keyB = b.name
+      if (keyA < keyB) return -1;
+      if (keyA > keyB) return 1;
+      return 0;
+    })
+
+    return sortedList.map(park => {
       return (
-        <div className="list-item">
-          <h4>{park.name}</h4>
-          <p>{park.description}</p>
-        </div>
+        <li>• {park.name}</li>
       )
     })
   }
 
   return (
-    <div className="stack-sections">
+    <ul className="stack-sections beacon-list">
       {listBeaconParks()}
-    </div>
+    </ul>
   );
 }
 

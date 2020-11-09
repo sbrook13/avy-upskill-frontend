@@ -13,6 +13,7 @@ $x: 1rem;
 $xx: 1.25rem;
 $xxx: 1.5rem;
 $xxxx: 2rem;
+$xxxxb: 2.5rem;
 $xxxxx: 4rem;
 $xxxxxx: 5rem;
 $xxxxxxx: 7rem;
@@ -39,7 +40,7 @@ h3 {
 }
 h4 {
   font-size: $xx;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 p {
@@ -52,7 +53,7 @@ section {
 }
 
 .bold {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .button {
@@ -162,7 +163,7 @@ button:hover {
 
 .stack-sections {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -219,12 +220,15 @@ button:hover {
 }
 
 .page-title {
-  margin: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  min-height: 21rem;
   h2, p {
     margin-top: 1rem;
     margin-bottom: 2rem;
-    margin-left: 6rem;
-    margin-right: 6rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
   }
   img {
     max-width: 300px;
@@ -232,9 +236,23 @@ button:hover {
 }
 
 .beacon-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: $medium-color;
   padding: 1rem;
   color: white;
+  h1{
+    font-size:$xxxxx;
+    margin: 1.5rem;
+  }
+}
+.beacon-list {
+  margin-left: 3.5rem;
+  margin-top: 3.5rem;
+  align-items: flex-start;
+  line-height: 20px;
 }
 
 .main-section {
@@ -247,6 +265,23 @@ button:hover {
   z-index: 1;
   margin-top: 9.6rem;
   width: 100%;
+}
+
+.landing-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 11.25rem;
+  width: 100%;
+}
+.image-bar{
+  img{
+    width:25%;
+  }
 }
 
 .login-form {
@@ -271,8 +306,10 @@ button:hover {
     padding-left: 2rem;
   }
 }
-.min-height{
+.map-nav{
   height: 3rem;
+  justify-content: flex-start;
+  margin-top: 1rem;
 }
 
 .course-type {
@@ -287,8 +324,9 @@ button:hover {
 }
 
 .split-section {
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   position: relative;
   .image-stack {
@@ -307,7 +345,7 @@ button:hover {
     width: 65%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -345,6 +383,51 @@ form {
     margin-top: .5rem;
   }
 }
+
+.add-form {
+  width: 50%;
+  .text-input {
+    height: 7rem;
+  }
+
+}
+.current-weather{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  line-height: 45px;
+  background-color: $light-color;
+  border-radius: 4px;
+  padding: 2rem;
+  margin: 1rem;
+  width: 20%;
+  line-height: 40px;
+  box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39);
+  .weather-section {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+  }
+  .small-title {
+    font-size: 15px
+  }
+  h2{
+    font-size: $xxxxb
+  }
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 30px;
+  }
+  p {
+    font-size:11px;
+    line-height: 14px;
+  }
+  h4{
+    font-weight: 600;
+  }
+}
+
 .details-card {
   display: flex;
   justify-content: flex-start;
@@ -368,7 +451,7 @@ form {
 }
 .course-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   h3 {
@@ -383,27 +466,49 @@ form {
   padding-right: 1rem;
   margin: .5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   position: relative;
   width: 90%;
   min-height: 2.5rem;
   text-align: left;
   .class-title {
-    width: 27%;
+    width: 25%;
   }
   .course-details {
-    width: 73%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    width: 75%;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    grid-gap: 5px;
+    // display: flex;
+    // justify-content: center;
     text-align: left;
+    p{
+    font-size: 12px;
+    line-height: 14px;
+    }
   }
 }
 
 .list-item:hover {
   background-color: $medium-color;
   color: white;
+}
+
+.area-cards {
+  .description {
+    font-size: 11px;
+    line-height: 14px;
+    margin: 1rem;
+    width: 75%
+  }
+  .area-title {
+    margin: .5rem;
+    width: 24%;
+  }
+  a{
+    font-size: 11px
+  }
 }
 
 .menu-button {

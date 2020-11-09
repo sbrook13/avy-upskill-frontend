@@ -14,7 +14,6 @@ export function createUser(e, setUser, userInfo, history){
       if(result.status == 201){
         setToken(result.token)
         setUser(result.user)
-        history.push('/')
       } else {
         if (result.username){
           throw new Error(result.username[0])
