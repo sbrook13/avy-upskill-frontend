@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { handleSetStateOnClick } from '../utils/functions';
 
 function CourseFilter(props) {
@@ -22,19 +22,34 @@ function CourseFilter(props) {
     } else {
       setFunction(input)
     }
-    filterCourses()
   }
+  useEffect(() => {
+    filterCourses()
+  }, [selectedCourseType, selectedProvider])
 
   const filterCourses = () => {
-    console.log("course type", selectedCourseType)
-    console.log("before filter", filteredList)
+    const messageLine = document.querySelector('.bad-search')
+          messageLine.innerHTML = ""
     if (selectedCourseType === null && selectedProvider === null){
-      showAllCourses()
+      setFilteredList(courses)
     } else {
-      showAllCourses()
-      const filteredCourses = filteredList.filter(course => course.class_type === selectedCourseType)
-      setFilteredList(filteredCourses)
-      console.log("after filter", filteredCourses)
+      if (selectedProvider === null) {
+        const filteredCourses = courses.filter(course => course.class_type === selectedCourseType)
+        setFilteredList(filteredCourses)
+      } else if (selectedCourseType === null) {
+        const filteredCourses = courses.filter(course => course.provider === selectedProvider)
+        setFilteredList(filteredCourses)
+      } else {
+        const filteredByCourseType = courses.filter(course => course.class_type === selectedCourseType)
+        const secondFilterByProvider = filteredByCourseType.filter(course => course.provider === selectedProvider)
+        if (secondFilterByProvider.length === 0){
+          console.log("DOES NOT EXIST!")
+          const messageLine = document.querySelector('.bad-search')
+          messageLine.innerHTML = "Sorry, that combination does not exist. Try again!"
+        } else {
+          setFilteredList(secondFilterByProvider)
+        }
+      }  
     }
   }
 
@@ -70,10 +85,13 @@ function CourseFilter(props) {
   }
 
   return (
-    <div>
-      {loadSearchByCourse()}
-      {loadSearchByProviders()}
-    </div>
+    <>
+      <div>
+        {loadSearchByCourse()}
+        {loadSearchByProviders()}
+      </div>
+      <p className="bad-search"></p>
+    </>
   );
 }
 

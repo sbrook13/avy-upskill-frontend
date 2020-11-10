@@ -1,29 +1,35 @@
 import React, {useState} from 'react';
-import { handleSetStateOnClick } from '../utils/functions';
+import { handleSetStateOnClick, reformatDate } from '../utils/functions';
 
 function CourseDetail({selected, showAllCourses}) {
   
   return (
-    <div className="details-card">
-      <div className="go-back">
-        <button className="page-number" onClick={()=>showAllCourses()}>x</button>
+    <div className="details-card stack-sections">
+      <div className="spread-section">
+        <div className="stack-sections left-align">
+          <h4>{selected.class_type} in {selected.location}</h4> 
+          <div className="info-section stack-sections left-align">
+            <p>with {selected.provider}</p>
+            <p>{reformatDate(selected.start_date)} to {reformatDate(selected.end_date)}</p>
+          </div>
+          <h4>{selected.cost}</h4> 
+        </div>
+        <div>
+          <button className="page-number no-margin" onClick={()=>showAllCourses()}>x</button>
+        </div>
       </div>
-      <h2>{selected.class_type} in {selected.location}</h2>
-      <h3>with {selected.provider}</h3>
-      <h4>Dates</h4>
-      <p>{selected.start_date} to {selected.end_date}</p>
-      <h4>Cost</h4>
-      <p>{selected.cost}</p>
-      <h4>Contact</h4>
-      <p>Phone: {selected.phone}</p>
-      <a href={selected.provider_url}>{selected.provider_url}</a>
-      <div>
-        <a href={selected.aiare_url} target="_blank">
-          <button className="button" >{selected.class_type} Details</button>
-        </a>
+      <div className="spread-buttons">
         <a href={selected.details_url} target="_blank">
-          <button className="button">Register</button>
+          <button className="button no-side-margin">Register</button>
         </a>
+        <a href={selected.aiare_url} target="_blank">
+          <button className="button no-side-margin" >{selected.class_type} Details</button>
+        </a>
+      </div>
+      <div className="stack-sections left-align">
+        <p>For more information:</p>
+        <p>{selected.phone}</p>
+        <a href={selected.provider_url}>{selected.provider_url}</a>
       </div>
     </div>
   );

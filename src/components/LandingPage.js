@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import {parseJSON, handleError} from '../utils/functions'
 import WeatherContainer from './WeatherContainer'
 import KnowBeforeYouGo from './Kbyg'
@@ -16,7 +17,35 @@ function LandingPage() {
       </div>
       <div className="split-section">
         <WeatherContainer />
-        <KnowBeforeYouGo />
+        {/* <KnowBeforeYouGo /> */}
+        <div className="grid-rows landing-categories">
+          <div className="nav-sections">
+            <h2>Education</h2>
+            <p>Find courses from the American Institute for Avalanche Research and Education:</p>
+            <ul>
+              <li>• Avalanche Rescue</li>
+              <li>• AIARE 1</li>
+              <li>• AIARE 2</li>
+            </ul>
+            <Link to="/courses">
+              <button className="button">COURSES</button>
+            </Link>
+          </div>
+          <div className="nav-sections">
+            <h2>Practice</h2>
+            <p>Colorado has many free beacon parks where you can bring your gear (beacon, probe, shovel) and practice your skills to find buried signals.</p>
+            <Link to="/beacon-parks">
+              <button className="button">BEACON PARKS</button>
+            </Link>
+          </div>
+          <div className="nav-sections">
+            <h2>Experience</h2>
+            <p>Not sure where to go? This community sourced page lists low-angle, relatively safe backcountry zones where you can explore and get used to skiing varied terrain.</p>
+            <Link to="/backcountry-zones">
+              <button className="button">BACKCOUNTRY ZONES</button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

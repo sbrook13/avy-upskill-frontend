@@ -88,7 +88,7 @@ function CoursesPage() {
       </section>
       <section className="split-section">
         <div className="image-stack">
-          <img intrinsicsize="538 x 749" src="https://i.imgur.com/7G7squA.jpg" alt="compression test"/>
+          <img src="https://i.imgur.com/7G7squA.jpg" alt="compression test"/>
           <img src="https://i.imgur.com/24LmdkV.jpg" alt="three students in the backcountry assessing the terrain"/>
         </div>
         <div className="course-list">

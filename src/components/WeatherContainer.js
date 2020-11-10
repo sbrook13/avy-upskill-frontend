@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {parseJSON, handleError} from '../utils/functions'
 import {windDirection, unixConversion} from '../utils/weather'
+import {weatherURL} from '../constants'
 
 
 function WeatherContainer() {
@@ -9,10 +10,9 @@ function WeatherContainer() {
 
   useEffect(() => {
     const fetchCurrentWeather = () => {
-      fetch("https://api.openweathermap.org/data/2.5/weather?lat=39.6789&lon=-105.9202&appid=XXXX&units=imperial")
+      fetch(weatherURL)
         .then(parseJSON)
         .then(result => setCurrentWeather(result))
-        .catch(err => handleError(err))
     }
     fetchCurrentWeather()
   }, [])

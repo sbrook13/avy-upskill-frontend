@@ -1,5 +1,5 @@
 import React from 'react';
-import { handleSetStateOnClick } from '../utils/functions';
+import { handleSetStateOnClick, reformatDate } from '../utils/functions';
 import CourseFilter from './CourseFilter'
 import CourseDetails from './CourseDetails'
 
@@ -10,9 +10,14 @@ class CoursesList extends React.Component {
   }
 
   componentDidMount(){
-    console.log("componentdidmount", this.props.filteredList)
     this.props.setCoursesToDisplay(this.props.filteredList.slice(0,10))
     this.setState({page:1})
+  }
+
+  componentDidUpdate(props){
+    if (this.props.filteredList !== props.filteredList){
+      this.props.setCoursesToDisplay(this.props.filteredList.slice(0,10))
+    }
   }
 
   displayCourses = () => {
@@ -23,22 +28,19 @@ class CoursesList extends React.Component {
           >
           <h4 className="class-title">{course.class_type}</h4>
           <section className="course-details">
-            <p>{course.provider}</p>
+            <div className="stack-sections">
+              <p>{course.provider}</p>
+              <p>{reformatDate(course.start_date)} to {reformatDate(course.end_date)}</p>
+            </div>
             <p>{course.location}</p>
-            <p>{this.reformatDate(course.start_date)} to {this.reformatDate(course.end_date)}</p>
+            <h4>{course.cost}</h4>
           </section>
         </div>
       )
     })
   }
 
-  reformatDate = (dateToReformat) => {
-    let date = new Date(dateToReformat)
-    let year = date.getFullYear()
-    let month = date.getMonth()
-    let day = date.getDate()
-    return `${month}/${day}/${year}`
-  }
+  
 
   displayButtons = () => {
     let totalPages = Math.ceil(this.props.filteredList.length/15)

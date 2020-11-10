@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ProfilePage() {
+function ProfilePage({user}) {
   return (
     <div className="profile-page main-section">
     </div>

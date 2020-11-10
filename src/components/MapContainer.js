@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import ReactTooltip from 'react-tooltip';
 import {
   ComposableMap,
   ZoomableGroup,
@@ -13,19 +12,21 @@ import {setMarkers, setCityMarkers} from '../utils/setMarkers'
 
 const geoUrl = "./co_w_counties.json";
 
-function MapContainer({markers, subtitle, setSelected}) {
+function MapContainer({markers, subtitle, type, setSelected}) {
 
   const [markerName, setMarkerName] = useState("")
 
-  const setArea = (event, selection) => {
-    setSelected(selection)
+  const handleMarkerClick = (_, marker) => {
+    if ( type === "area"){
+      setSelected(marker.fullInfo)
+    }
   }
 
   return (
     <div className="MapContainer stack-sections" >
       <div className="stack-sections map-nav">
         <p>{subtitle}</p>
-        <p className="bold">{markerName}</p>
+        <h4 className="bold">{markerName}</h4>
       </div>
       <div>
           <ComposableMap 
@@ -69,8 +70,7 @@ function MapContainer({markers, subtitle, setSelected}) {
                 }
               </Geographies>
               {setCityMarkers(coCities)}
-              {setMarkers(markers, setMarkerName)}
-              <ReactTooltip>{markerName}</ReactTooltip>
+              {setMarkers(markers, setMarkerName, handleMarkerClick)}
             </ZoomableGroup>
           </ComposableMap> 
       </div>
