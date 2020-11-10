@@ -11,11 +11,17 @@ function LoginOrSignupForm({setUser, type, setIsOpen}) {
   function handleSubmit(event){
     const userInfo = { username, password }
     if (type == "Login"){
-      loginUser(event, setUser, userInfo, setIsOpen)
+      loginUser(event, setUser, userInfo, setIsOpen, handleError)
     } else {
-      createUser(event, setUser, userInfo, setIsOpen)
+      createUser(event, setUser, userInfo, setIsOpen, handleError)
     }
   }
+
+  function handleError(error){
+    const errorMessage = document.querySelector('.login-error')
+    errorMessage.innerHTML = error
+  }
+  
 
   return (
     <div className="login-form">

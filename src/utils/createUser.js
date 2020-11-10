@@ -3,7 +3,7 @@ import {parseJSON, setToken, handleError} from './functions'
 import { getProfile } from './getProfile'
 import { loginUser } from './loginUser'
 
-export function createUser(e, setUser, userInfo, setIsOpen){ 
+export function createUser(e, setUser, userInfo, setIsOpen, handleError){ 
   e.preventDefault()
   fetch(signupURL, {
     method: 'POST', 
@@ -14,7 +14,7 @@ export function createUser(e, setUser, userInfo, setIsOpen){
     .then(result => {
       if (result.id) {
         getNewUserToken(userInfo, setIsOpen)
-        getProfile(setUser)
+          .then(() => getProfile(setUser))
       } else {
         handleError("Please try again")
       }
@@ -22,14 +22,17 @@ export function createUser(e, setUser, userInfo, setIsOpen){
 }  
 
 function getNewUserToken (userInfo, setIsOpen){
-  fetch(loginURL, {
-    method: 'POST', 
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(userInfo)
-  })
-    .then(parseJSON)
-    .then(result => {
-      setToken(result.token)
-      setIsOpen(false)
+  return (
+    fetch(loginURL, {
+      method: 'POST', 
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(userInfo)
     })
+      .then(parseJSON)
+      .then(result => {
+        setToken(result.token)
+        setIsOpen(false)
+    })
+  )
+  
 }  

@@ -11,11 +11,12 @@ export function getProfile(setUser){
   })
     .then(parseJSON)
     .then(result => {
+      console.log(result)
       if(result.id){
         setUser(result)
       } else {
         console.log("else", result)
       }      
     })
-    .catch(handleError)
+    .catch(error => console.log("ERROR!", error))
 }  
