@@ -11,7 +11,7 @@ import {
 import LoginOrSignupForm from './LoginOrSignupForm';
 
 
-function Header({user, setUser, history, setIsOpen, setOption}) {
+function Header({user, setUser, setIsOpen, type}) {
 
   
   const hoverIcon = (event, selection) => {
@@ -19,16 +19,14 @@ function Header({user, setUser, history, setIsOpen, setOption}) {
     navBarName.innerHTML = `${selection}`
   }
 
-  const handleSignupClick = () => {
-    console.log("signup")
+  const handleLoginOrSignupClick = (_, option) => {
+    console.log(option, "was clicked!")
+    type(option)
+    setIsOpen(true)
   }
 
-  const handleLoginClick = () => {
-    console.log("login")
-  }
 
   const handleLogoutClick = () => {
-    console.log("logout")
     setUser(null)
     localStorage.clear()
     window.location.href = '/'
@@ -44,12 +42,14 @@ function Header({user, setUser, history, setIsOpen, setOption}) {
         </div>
         <div className="stack-sections right-align">
           {user ? 
-            <button className="login-button" onClick={() => handleLogoutClick()}>Logout</button> : 
-            (<div>
-              <button className="login-button" onClick={() => (setIsOpen(true), setOption('login'))}>Login</button>
-              <button className="login-button" onClick={() => (setIsOpen(true), setOption('signup'))}>Signup</button>
+            <div className="spreads=-section">
+              <p className="small-text">Logged in as {user.username}</p>
+              <button className="login-button" onClick={() => handleLogoutClick()}>Logout</button> 
+            </div>: 
+            <div>
+              <button className="login-button" onClick={(_) => handleLoginOrSignupClick(_,'Login')}>Login</button>
+              <button className="login-button" onClick={(_) => handleLoginOrSignupClick(_,'Signup')}>Signup</button>
             </div>
-            )
           }
           <nav className="nav-bar">
             {user ? 

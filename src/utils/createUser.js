@@ -1,8 +1,9 @@
-import {signupURL} from '../constants'
+import {signupURL, loginURL} from '../constants'
 import {parseJSON, setToken, handleError} from './functions'
+import { getProfile } from './getProfile'
 import { loginUser } from './loginUser'
 
-export function createUser(e, setUser, userInfo, history){ 
+export function createUser(e, setUser, userInfo, setIsOpen){ 
   e.preventDefault()
   fetch(signupURL, {
     method: 'POST', 
@@ -11,17 +12,24 @@ export function createUser(e, setUser, userInfo, history){
   })
     .then(parseJSON)
     .then(result => {
-      if(result.status == 201){
-        setToken(result.token)
-        setUser(result.user)
+      if (result.id) {
+        getNewUserToken(userInfo, setIsOpen)
+        getProfile(setUser)
       } else {
-        if (result.username){
-          throw new Error(result.username[0])
-        }
-        if (result.password){
-          throw new Error(result.password[0])
-        }
+        handleError("Please try again")
       }
     })
-    .catch(handleError)
+}  
+
+function getNewUserToken (userInfo, setIsOpen){
+  fetch(loginURL, {
+    method: 'POST', 
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(userInfo)
+  })
+    .then(parseJSON)
+    .then(result => {
+      setToken(result.token)
+      setIsOpen(false)
+    })
 }  

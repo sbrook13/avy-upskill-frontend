@@ -1,12 +1,12 @@
 import { Marker } from "react-simple-maps";
 
-export function setMarkers(markers, setFunction, color) {
+export function setMarkers(markers, setFunction, handleMarkerClick) {
   return markers.map(marker => {
     return (
       <Marker 
         key={marker.name} 
         coordinates={marker.coordinates}
-        onClick={() => console.log(`${marker.name}`)}
+        onClick={(_) => handleMarkerClick(_, marker)}
         onMouseEnter={() => {
           setFunction(`${marker.name}`);
         }}

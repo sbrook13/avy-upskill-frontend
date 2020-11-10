@@ -34,7 +34,7 @@ function BeaconParksPage() {
         <p>Beacon parks provide an easy, convenient way to practice your skills. The parks are free, open to the public, simple, and always on and available. Each park may be a bit different but all are easy to use and have instructions. They have switches to turn on one or more buried transceivers.</p>
       </section>
       <div className="split-half">
-        <MapContainer markers={markers} subtitle={"Highlight a marker to see Beacon Park location:"} setSelected={setSelected}/>
+        <MapContainer markers={markers} subtitle={"Highlight a marker to see Beacon Park location:"} type={"beacon park"} setSelected={setSelected}/>
         <BeaconParkList beaconParks={beaconParks} />
       </div>
     </div>

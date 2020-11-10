@@ -63,7 +63,6 @@ section {
   background-color: $dark-color;
   border: none;
   margin: 1rem;
-  // margin-right: 1rem;
   min-width: 10rem;
 }
 
@@ -78,6 +77,11 @@ section {
   margin-right: .2rem;
   min-width: 5rem;
 }
+.small-text{
+  font-size:10px;
+  margin-right: .5rem;
+}
+
 .page-number {
   padding: .5rem;
   border-radius: 4px;
@@ -85,7 +89,7 @@ section {
   background-color: $dark-color;
   border: none;
   margin: .5rem;
-  min-width: 2rem;
+  width: 2rem;
 }
 
 button:focus {
@@ -106,11 +110,43 @@ button:hover {
   box-sizing: border-box ;
 }
 
+.overlay{
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  background-color: rgba(0, 12, 52, 0.5);
+  animation-duration: 0.4s;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.dismiss {
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.modalBox {
+  width: 40%;
+  height: 50%;
+  margin: 10% auto;
+  padding: 2rem;
+  position: relative;
+  border-radius: 4px;
+  background-color: white;
+  animation-duration: 0.5s;
+  box-shadow: 0px 0px 30px #122635a1
+}
+
 .header {
   width: 100%;
-  // height: 100vh;
   background-color: $base-color;
-  // background-image: url("https://thumbs.dreamstime.com/b/light-topographic-topo-contour-map-background-stock-illustration-light-topographic-topo-contour-map-background-143416914.jpg");
   position: fixed;
   z-index: 10;
   box-shadow: 0 3px 12px 0px rgba(189, 189, 189, 0.39);
@@ -167,13 +203,6 @@ button:hover {
   flex-direction: column;
 }
 
-.right-align {
-  align-items: flex-end;
-}
-
-.space-between {
-  justify-content: space-between;
-}
 .ski-sidebar {
   height: 475px;
 }
@@ -183,8 +212,7 @@ button:hover {
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  margin: 1.5rem 3rem 2rem 3rem;
-  border-bottom: $dark-color 1.75px solid;
+  margin: 1.5rem 2rem 1.5rem 2rem;
 }
 
 .nav-bar {
@@ -210,6 +238,7 @@ button:hover {
 
 .nav-icon {
   padding-left: 1rem;
+  padding-top: .25rem;
 }
 
 .title {
@@ -263,7 +292,7 @@ button:hover {
   text-align: center;
   position: relative;
   z-index: 1;
-  margin-top: 9.6rem;
+  margin-top: 9rem;
   width: 100%;
 }
 
@@ -284,15 +313,40 @@ button:hover {
   }
 }
 
-.login-form {
+.grid-rows{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8px;
+}
+
+.landing-categories {
+  margin: 2rem;
+  margin-top:4rem;
+  line-height: 24px;
+  ul, p {
+    margin: 1rem;
+    margin-bottom:0;
+  }
+}
+
+.nav-sections {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  margin-top: 15rem;
-  width: 100%;
-  height: 100vh;
+  h2{
+    margin-bottom: 2rem;
+  }
 }
 
 .co-map {
@@ -302,21 +356,25 @@ button:hover {
 
 .MapContainer {
   text-align: left;
-  p {
+  p, h4 {
     padding-left: 2rem;
   }
 }
 .map-nav{
-  height: 3rem;
+  height: 4rem;
+  line-height: 36px;
   justify-content: flex-start;
   margin-top: 1rem;
 }
 
 .course-type {
-  width: 100%;
+  width: 95%;
+  margin-left: 2rem;
+  margin-right: 2rem;
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 8px;
+  grid-gap: 10px;
   text-align: center;
   p {
     margin: .5rem;
@@ -385,23 +443,30 @@ form {
 }
 
 .add-form {
-  width: 50%;
-  .text-input {
-    height: 7rem;
+  textarea {
+    font-family: 'Source Sans Pro', sans-serif; 
+    font-size: 14px;
+    padding: .5rem;
+    margin-top: .25rem;
+    border-radius: 4px;
+    border: 1px $dark-color solid;
   }
-
 }
+
+textarea:focus {
+  outline: none;
+}
+
 .current-weather{
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  line-height: 45px;
   background-color: $light-color;
   border-radius: 4px;
-  padding: 2rem;
-  margin: 1rem;
-  width: 20%;
+  padding: 1.5rem;
+  margin: 2rem;
+  width: 18%;
   line-height: 40px;
   box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39);
   .weather-section {
@@ -430,28 +495,51 @@ form {
 
 .details-card {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   flex-direction: column;
-  line-height: 45px;
   background-color: $light-color;
   border-radius: 4px;
   padding: 2rem;
-  width: 70%;
+  width: 50%;
   box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39);
+  p {
+    line-height: 24px;
+  }
   h3 {
     margin-bottom: 0;
   }
+  a{
+    padding: 0
+  }
+  .info-section{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
 }
-.go-back {
+.spread-section {
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  .margin-right {
+    margin-right: 1rem;
+
+  }
 }
+
+.ski-detail-card{
+  width: 50%;
+  margin: 2rem;
+  p {
+    margin-top: 1rem
+  }
+}
+
 .course-list {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   h3 {
@@ -478,10 +566,9 @@ form {
   .course-details {
     width: 75%;
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-columns: 4fr 4fr 1fr;
     grid-gap: 5px;
-    // display: flex;
-    // justify-content: center;
+    align-items: center;
     text-align: left;
     p{
     font-size: 12px;
@@ -495,20 +582,56 @@ form {
   color: white;
 }
 
+.cards-section {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .area-cards {
-  .description {
-    font-size: 11px;
-    line-height: 14px;
-    margin: 1rem;
-    width: 75%
-  }
+  width: 45%;
+  padding: .25rem;
+  margin: .5rem;
+  border-radius: 4px;
+  border: 1px $dark-color solid;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  min-height: 4rem;
+  text-align: left;
   .area-title {
-    margin: .5rem;
-    width: 24%;
+    width: 62%;
+  }
+  .like-button-section{
+    width: 32%;
+  }
+  .like-button {
+    fill: none;
+  }
+  button {
+    padding: .25rem;
+    font-size: 12px;
+    border-radius: 4px;
+    color: white;
+    background-color: $medium-color;
+    border: none;
+    margin-left: .2rem;
+    margin-right: .2rem;
+    min-width: 5rem;
   }
   a{
     font-size: 11px
   }
+  p, h4 {
+    margin: 0
+  }
+}
+.area-cards:hover {
+  background-color: $medium-color;
+  color: white;
 }
 
 .menu-button {
@@ -551,4 +674,39 @@ form {
 
 .menu-btn-burger:after {
   transform: translate(16px);
+}
+
+.no-margin{
+  margin: 0;
+}
+
+.no-side-margin{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.spread-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-align {
+  align-items: flex-end;
+}
+
+.left-align {
+  align-items: flex-start;
+}
+
+.space-between {
+  justify-content: space-between;
 }

@@ -49,6 +49,10 @@ section {
   margin-right: .2rem;
   min-width: 5rem; }
 
+.small-text {
+  font-size: 10px;
+  margin-right: .5rem; }
+
 .page-number {
   padding: .5rem;
   border-radius: 4px;
@@ -56,7 +60,7 @@ section {
   background-color: #1a354b;
   border: none;
   margin: .5rem;
-  min-width: 2rem; }
+  width: 2rem; }
 
 button:focus {
   outline: none; }
@@ -72,6 +76,37 @@ button:hover {
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box; }
+
+.overlay {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  background-color: rgba(0, 12, 52, 0.5);
+  animation-duration: 0.4s;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+.dismiss {
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 12px;
+  text-decoration: none; }
+
+.modalBox {
+  width: 40%;
+  height: 50%;
+  margin: 10% auto;
+  padding: 2rem;
+  position: relative;
+  border-radius: 4px;
+  background-color: white;
+  animation-duration: 0.5s;
+  box-shadow: 0px 0px 30px #122635a1; }
 
 .header {
   width: 100%;
@@ -123,12 +158,6 @@ button:hover {
   justify-content: center;
   flex-direction: column; }
 
-.right-align {
-  align-items: flex-end; }
-
-.space-between {
-  justify-content: space-between; }
-
 .ski-sidebar {
   height: 475px; }
 
@@ -137,8 +166,7 @@ button:hover {
   justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  margin: 1.5rem 3rem 2rem 3rem;
-  border-bottom: #1a354b 1.75px solid; }
+  margin: 1.5rem 2rem 1.5rem 2rem; }
 
 .nav-bar {
   display: flex;
@@ -157,7 +185,8 @@ button:hover {
     text-decoration: none; }
 
 .nav-icon {
-  padding-left: 1rem; }
+  padding-left: 1rem;
+  padding-top: .25rem; }
 
 .title {
   line-height: 4rem;
@@ -204,7 +233,7 @@ button:hover {
   text-align: center;
   position: relative;
   z-index: 1;
-  margin-top: 9.6rem;
+  margin-top: 9rem;
   width: 100%; }
 
 .landing-page {
@@ -221,15 +250,35 @@ button:hover {
 .image-bar img {
   width: 25%; }
 
-.login-form {
+.grid-rows {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 8px; }
+
+.landing-categories {
+  margin: 2rem;
+  margin-top: 4rem;
+  line-height: 24px; }
+  .landing-categories ul, .landing-categories p {
+    margin: 1rem;
+    margin-bottom: 0; }
+
+.nav-sections {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column; }
+
+.login-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
-  margin-top: 15rem;
-  width: 100%;
-  height: 100vh; }
+  text-align: center; }
+  .login-form h2 {
+    margin-bottom: 2rem; }
 
 .co-map {
   width: 550px;
@@ -237,19 +286,23 @@ button:hover {
 
 .MapContainer {
   text-align: left; }
-  .MapContainer p {
+  .MapContainer p, .MapContainer h4 {
     padding-left: 2rem; }
 
 .map-nav {
-  height: 3rem;
+  height: 4rem;
+  line-height: 36px;
   justify-content: flex-start;
   margin-top: 1rem; }
 
 .course-type {
-  width: 100%;
+  width: 95%;
+  margin-left: 2rem;
+  margin-right: 2rem;
   display: grid;
+  justify-items: center;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 8px;
+  grid-gap: 10px;
   text-align: center; }
   .course-type p {
     margin: .5rem; }
@@ -305,22 +358,27 @@ form input:focus {
 form label {
   margin-top: .5rem; }
 
-.add-form {
-  width: 50%; }
-  .add-form .text-input {
-    height: 7rem; }
+.add-form textarea {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  padding: .5rem;
+  margin-top: .25rem;
+  border-radius: 4px;
+  border: 1px #1a354b solid; }
+
+textarea:focus {
+  outline: none; }
 
 .current-weather {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  line-height: 45px;
   background-color: #b2c5d23e;
   border-radius: 4px;
-  padding: 2rem;
-  margin: 1rem;
-  width: 20%;
+  padding: 1.5rem;
+  margin: 2rem;
+  width: 18%;
   line-height: 40px;
   box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39); }
   .current-weather .weather-section {
@@ -342,27 +400,42 @@ form label {
 
 .details-card {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
   flex-direction: column;
-  line-height: 45px;
   background-color: #b2c5d23e;
   border-radius: 4px;
   padding: 2rem;
-  width: 70%;
+  width: 50%;
   box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39); }
+  .details-card p {
+    line-height: 24px; }
   .details-card h3 {
     margin-bottom: 0; }
+  .details-card a {
+    padding: 0; }
+  .details-card .info-section {
+    margin-top: .5rem;
+    margin-bottom: .5rem; }
 
-.go-back {
+.spread-section {
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%; }
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem; }
+  .spread-section .margin-right {
+    margin-right: 1rem; }
+
+.ski-detail-card {
+  width: 50%;
+  margin: 2rem; }
+  .ski-detail-card p {
+    margin-top: 1rem; }
 
 .course-list {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column; }
   .course-list h3 {
@@ -386,8 +459,9 @@ form label {
   .list-item .course-details {
     width: 75%;
     display: grid;
-    grid-template-columns: 2fr 2fr 1fr;
+    grid-template-columns: 4fr 4fr 1fr;
     grid-gap: 5px;
+    align-items: center;
     text-align: left; }
     .list-item .course-details p {
       font-size: 12px;
@@ -397,18 +471,49 @@ form label {
   background-color: #5a778c;
   color: white; }
 
-.area-cards .description {
-  font-size: 11px;
-  line-height: 14px;
-  margin: 1rem;
-  width: 75%; }
+.cards-section {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
 
-.area-cards .area-title {
+.area-cards {
+  width: 45%;
+  padding: .25rem;
   margin: .5rem;
-  width: 24%; }
+  border-radius: 4px;
+  border: 1px #1a354b solid;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  min-height: 4rem;
+  text-align: left; }
+  .area-cards .area-title {
+    width: 62%; }
+  .area-cards .like-button-section {
+    width: 32%; }
+  .area-cards .like-button {
+    fill: none; }
+  .area-cards button {
+    padding: .25rem;
+    font-size: 12px;
+    border-radius: 4px;
+    color: white;
+    background-color: #5a778c;
+    border: none;
+    margin-left: .2rem;
+    margin-right: .2rem;
+    min-width: 5rem; }
+  .area-cards a {
+    font-size: 11px; }
+  .area-cards p, .area-cards h4 {
+    margin: 0; }
 
-.area-cards a {
-  font-size: 11px; }
+.area-cards:hover {
+  background-color: #5a778c;
+  color: white; }
 
 .menu-button {
   position: relative;
@@ -446,3 +551,30 @@ form label {
 
 .menu-btn-burger:after {
   transform: translate(16px); }
+
+.no-margin {
+  margin: 0; }
+
+.no-side-margin {
+  margin-left: 0;
+  margin-right: 0; }
+
+.spread-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; }
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.right-align {
+  align-items: flex-end; }
+
+.left-align {
+  align-items: flex-start; }
+
+.space-between {
+  justify-content: space-between; }

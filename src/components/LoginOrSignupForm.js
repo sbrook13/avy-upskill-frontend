@@ -3,22 +3,23 @@ import {handleChange} from '../utils/functions'
 import {loginUser} from '../utils/loginUser'
 import {createUser} from '../utils/createUser'
 
-function LoginOrSignupForm({user, setUser, type, history}) {
+function LoginOrSignupForm({setUser, type, setIsOpen}) {
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
   function handleSubmit(event){
     const userInfo = { username, password }
-    if (type == "login"){
-      loginUser(event, setUser, userInfo, history)
+    if (type == "Login"){
+      loginUser(event, setUser, userInfo, setIsOpen)
     } else {
-      createUser(event, setUser, userInfo, history)
+      createUser(event, setUser, userInfo, setIsOpen)
     }
   }
 
   return (
-    <div className="login-form main-section">
+    <div className="login-form">
+      <h2>{type}</h2>
       <form className="stack-sections" onSubmit={(_) => handleSubmit(_)}>
         <label for="username">Username</label>
         <input type="text" id="username" name="username" onChange={(_) => handleChange(_, setUsername)}/>

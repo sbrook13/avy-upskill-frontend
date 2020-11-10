@@ -9,7 +9,7 @@ function WeatherContainer() {
 
   useEffect(() => {
     const fetchCurrentWeather = () => {
-      fetch("https://api.openweathermap.org/data/2.5/weather?lat=39.6789&lon=-105.9202&appid=XXXX&units=imperial")
+      fetch("https://api.openweathermap.org/data/2.5/weather?lat=39.6789&lon=-105.9202&appid=38ec232d9de100c569f7c4641536f64f&units=imperial")
         .then(parseJSON)
         .then(result => setCurrentWeather(result))
         .catch(err => handleError(err))
