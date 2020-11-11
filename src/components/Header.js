@@ -8,7 +8,6 @@ import {
   faUser,
   faHome
  } from '@fortawesome/free-solid-svg-icons';
-import LoginOrSignupForm from './LoginOrSignupForm';
 
 
 function Header({user, setUser, setIsOpen, type}) {
@@ -43,7 +42,7 @@ function Header({user, setUser, setIsOpen, type}) {
         <div className="stack-sections right-align">
           {user ? 
             <div className="spreads=-section">
-              <p className="small-text">Logged in as {user.username}</p>
+              <p className="small-text">Logged in as <span className="bold">{user.username}</span></p>
               <button className="login-button" onClick={() => handleLogoutClick()}>Logout</button> 
             </div>: 
             <div>
@@ -73,21 +72,21 @@ function Header({user, setUser, setIsOpen, type}) {
                 onMouseLeave={(_) => hoverIcon(_, "")}
               />
             </Link>
-            <Link to="/beacon-parks">
-              <FontAwesomeIcon icon={faBullseye} 
-                size="2x" 
-                className="nav-icon" 
-                role="beacon parks link"
-                onMouseEnter={(_) => hoverIcon(_,"Beacon Parks")} 
-                onMouseLeave={(_) => hoverIcon(_, "")}
-              />
-            </Link>
             <Link to="/courses">
               <FontAwesomeIcon icon={faEdit} 
                 size="2x" 
                 className="nav-icon" 
                 role="courses link"
                 onMouseEnter={(_) => hoverIcon(_,"Courses")} 
+                onMouseLeave={(_) => hoverIcon(_, "")}
+              />
+            </Link>
+            <Link to="/beacon-parks">
+              <FontAwesomeIcon icon={faBullseye} 
+                size="2x" 
+                className="nav-icon" 
+                role="beacon parks link"
+                onMouseEnter={(_) => hoverIcon(_,"Beacon Parks")} 
                 onMouseLeave={(_) => hoverIcon(_, "")}
               />
             </Link>

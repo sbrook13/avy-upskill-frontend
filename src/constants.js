@@ -7,6 +7,10 @@ export const profileURL = `${baseURL}/profile/`;
 export const coursesURL = `${baseURL}/courses`;
 export const parksURL = `${baseURL}/beacon_parks`;
 export const areasURL = `${baseURL}/areas`;
+export const daysURL = `${baseURL}/backcountry_days`;
+export const favsURL = `${baseURL}/fav_areas`;
+export const commentsURL = `${baseURL}/comments/`;
+export const ratingsURL = `${baseURL}/ratings/`;
 export const weatherURL = `${baseURL}/weather`;
 
 export const authHeaders = { 

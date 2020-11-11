@@ -65,6 +65,9 @@ section {
   margin: 1rem;
   min-width: 10rem;
 }
+.back-button {
+  width: 15rem;
+}
 
 .login-button {
   padding: .5rem;
@@ -77,6 +80,7 @@ section {
   margin-right: .2rem;
   min-width: 5rem;
 }
+
 .small-text{
   font-size:10px;
   margin-right: .5rem;
@@ -110,11 +114,11 @@ button:hover {
   box-sizing: border-box ;
 }
 
-.overlay{
+.overlay {
   display: none;
   position: fixed;
   z-index: 9999;
-  background-color: rgba(0, 12, 52, 0.5);
+  background-color: rgba(12, 20, 43, 0.6);
   animation-duration: 0.4s;
   display: block;
   top: 0;
@@ -264,6 +268,18 @@ button:hover {
   }
 }
 
+.profile-title{
+  background: url('https://i.imgur.com/7S6Bw5p.jpg') no-repeat center center fixed;
+  background-size: 100vw;
+  color: white;
+  justify-content: center;
+  h2 {
+    font-size: 54px;
+    font-weight: 600;
+    padding-top: 7rem;
+  }
+}
+
 .beacon-title {
   display: flex;
   flex-direction: column;
@@ -410,6 +426,65 @@ button:hover {
   }
 }
 
+.profile-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+
+.left-side {
+  width: 35%;
+}
+
+.days-section {
+  width: 90%;
+  padding-right: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  background: $dark-color;
+  border-radius: 4px;
+  color: white;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  .start {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 8rem;
+    transform: translate(75px);
+  }
+  .day-count {
+    font-size: 75px;
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(10px, 5px);
+    color: $highlight;
+  }
+  .end {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 8rem;
+    transform: translate(-55px);
+  }
+  .days-text {
+    width: 75%
+  }
+  p {
+  //  margin: 1rem;
+ }
+}
+
+
+
+
 .search-bar{
   display: flex;
   justify-content: center;
@@ -427,6 +502,35 @@ button:hover {
   }
 }
 
+.backcountry-form {
+  margin-left: 2rem;
+  width: 90%;
+}
+
+.journal {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.journal-section {
+  margin: 2rem;
+}
+
+.journal-entry {
+  border: 1px $dark-color solid;
+  padding: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  min-height: 2.5rem;
+  text-align: left;
+}
+
 form {
   input {
     padding: .5rem;
@@ -435,7 +539,7 @@ form {
     border: 1px $dark-color solid;
   }
   input:focus {
-    outline: none;
+    outline: $highlight;
   }
   label {
     margin-top: .5rem;
@@ -443,18 +547,20 @@ form {
 }
 
 .add-form {
-  textarea {
-    font-family: 'Source Sans Pro', sans-serif; 
-    font-size: 14px;
-    padding: .5rem;
-    margin-top: .25rem;
-    border-radius: 4px;
-    border: 1px $dark-color solid;
-  }
+  margin-top: 1rem;
+}
+
+textarea {
+  font-family: 'Source Sans Pro', sans-serif; 
+  font-size: 14px;
+  padding: .5rem;
+  margin-top: .25rem;
+  border-radius: 4px;
+  border: 1px $dark-color solid;
 }
 
 textarea:focus {
-  outline: none;
+  outline: $highlight;
 }
 
 .current-weather{
@@ -530,7 +636,7 @@ textarea:focus {
 }
 
 .ski-detail-card{
-  width: 50%;
+  width: 60%;
   margin: 2rem;
   p {
     margin-top: 1rem
@@ -591,8 +697,8 @@ textarea:focus {
 }
 
 .area-cards {
-  width: 45%;
-  padding: .25rem;
+  width: 25%;
+  padding: 1rem;
   margin: .5rem;
   border-radius: 4px;
   border: 1px $dark-color solid;
@@ -603,7 +709,7 @@ textarea:focus {
   min-height: 4rem;
   text-align: left;
   .area-title {
-    width: 62%;
+    width: 90%;
   }
   .like-button-section{
     width: 32%;
@@ -634,48 +740,6 @@ textarea:focus {
   color: white;
 }
 
-.menu-button {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
-  transition: all .5s ease-in-out;
-  border: 3px solid red;
-}
-
-.menu-btn-burger {
-  width: 50px;
-  height: 6px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px $dark-color;
-  transition: all .5s ease-in-out;
-}
-
-.menu-btn-burger::before,
-.menu-btn-burger::after {
-  content: '';
-  position: absolute;
-  width: 50px;
-  height: 6px;
-  background: white;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px grey;
-  transition: all .5s ease-in-out;
-}
-
-.menu-btn-burger::before {
-  transform: translate(-16px)
-}
-
-.menu-btn-burger:after {
-  transform: translate(16px);
-}
-
 .no-margin{
   margin: 0;
 }
@@ -691,6 +755,50 @@ textarea:focus {
   justify-content: space-between;
 }
 
+.comment-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%
+}
+
+.comments {
+  width: 85%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: left;
+  p {
+    font-size: 12px;
+    border-left: solid 2px $highlight;
+    padding-left: .5rem;
+    line-height: 18px;
+    margin-bottom: .5rem;
+  }
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  .center {
+    justify-content: center;
+  }
+
+  .star-icon {
+    padding-top: .5rem;
+    color: $highlight;
+  }
+  .solid {
+    
+  }
+  .half {
+
+  }
+  .outline {
+
+  }
+}
 
 .center {
   width: 100%;

@@ -17,7 +17,6 @@ function App() {
   const [user, setUser] = useState(false)
   const [loginInOrOut, setLoginOrOut] = useState("")
   const [isOpen, setIsOpen] = useState(false)
-  const [userBackcountryDays, setUserBackcountryDays] = useState([])
   const [userSavedAreas, setUserSavedAreas] = useState([])
 
  
@@ -28,7 +27,7 @@ function App() {
         <Fragment>
           <ScrollToTop/>
           <Switch>
-            <Route path="/profile" render={ () => <ProfilePage user={user} userBackcountryDays={userBackcountryDays} setUserBackcountryDays={setUserBackcountryDays} /> } />
+            <Route path="/profile" render={ () => <ProfilePage user={user} userSavedAreas={userSavedAreas} setUserSavedAreas={setUserSavedAreas} /> } />
             <Route path="/courses" render={ () => <CoursesPage /> } />
             <Route path="/beacon-parks" render={ () => <BeaconParksPage user={user} /> } />
             <Route path="/backcountry-zones" render={ () => <SkiAreaPage user={user} setUserSavedAreas={setUserSavedAreas} /> } />

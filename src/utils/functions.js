@@ -10,6 +10,11 @@ export function parseJSON(response){
   return response.json()
 }
 
+export const captureInput = (event, setFunction) => {
+  const input = event.target.value
+  setFunction(input)
+}
+
 export const handleSetStateOnClick = (event, state, choice) => {
   state(choice)
 }
