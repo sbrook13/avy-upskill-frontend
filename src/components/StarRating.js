@@ -6,18 +6,26 @@ import { faStarHalfAlt as faStarHalfAlt } from '@fortawesome/free-solid-svg-icon
 
 
 const StarRating = ({rating}) => {
-    const solidStars = [];
-    const outlineStars = [];
-    for(let i = 1; i <=5; i++){
-        if(i <= rating) {
-            solidStars.push(<FontAwesomeIcon icon={faStarSolid} className="star-icon solid" style={{ color: "#FF5533" }}/>);
-        }
-        if (solidStars.length <= 5) {
-          for (let i=1; 1<=(5-solidStars.length); i++) {
-            outlineStars.push(<FontAwesomeIcon icon={faStarOutline} className="star-icon" />);
-          }  
-        } 
-    return <div className="star-rating">{solidStars}{outlineStars}</div>;
-    }
+    // const stars = [];
+    // for(let i = 1; i <=5; i++){
+    //     if(i <= rating) {
+    //         stars.push(<FontAwesomeIcon icon={faStarSolid} className="star-icon solid" style={{ color: "#FF5533" }}/>);
+    //     } else if (i === Math.ceil(rating) && !Number.isInteger(rating)){
+    //         stars.push(<FontAwesomeIcon icon={faStarSolid} className="star-icon half-fill" />);
+    //     } else{ 
+    //         stars.push(<FontAwesomeIcon icon={faStarSolid} className="star-icon outline" />);
+    //     }
+    // } 
+    // return <div className="star-rating">{stars}</div>;
+
+    return (
+      <>
+        <FontAwesomeIcon icon={faStarSolid} className="star-icon solid" style={{ color: "#FF5533" }} />
+        <FontAwesomeIcon icon={faStarSolid} className="star-icon solid" style={{ color: "#FF5533" }} />
+        <FontAwesomeIcon icon={faStarSolid} className="star-icon solid" style={{ color: "#FF5533" }} />
+        <FontAwesomeIcon icon={faStarHalfAlt} className="star-icon half-fill" style={{ color: "#FF5533" }} />
+        <FontAwesomeIcon icon={faStarOutline} className="star-icon outline" style={{ color: "#FF5533" }} />
+      </>
+    )
 }
 export default StarRating;

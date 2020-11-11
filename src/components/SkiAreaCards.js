@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faHeart,
  } from '@fortawesome/free-solid-svg-icons';
-
+import StarRating from './StarRating'
 
 function SkiAreaCards({user, areas, selected, setSelected}) {
 
@@ -20,7 +20,9 @@ function SkiAreaCards({user, areas, selected, setSelected}) {
           <div className="area-title stack-sections">
             <h4>{area.name}</h4>
             <p>{area.location}</p>
-            <p className="rating">****</p>
+            <div className="star-rating">
+              <StarRating ratings={area.ratings} />
+            </div>
           </div>
           {/* <div className="like-button-section stack-sections right-align space-between">
             <FontAwesomeIcon className="like-button" icon={faHeart} size="1x" />

@@ -779,11 +779,24 @@ textarea:focus {
 
 .star-rating {
   display: flex;
+  flex-direction: row;
   width: 100%;
-  justify-content: center;
+  .center {
+    justify-content: center;
+  }
+
   .star-icon {
     padding-top: .5rem;
     color: $highlight;
+  }
+  .solid {
+    
+  }
+  .half {
+
+  }
+  .outline {
+
   }
 }
 

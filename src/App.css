@@ -634,8 +634,10 @@ textarea:focus {
 
 .star-rating {
   display: flex;
-  width: 100%;
-  justify-content: center; }
+  flex-direction: row;
+  width: 100%; }
+  .star-rating .center {
+    justify-content: center; }
   .star-rating .star-icon {
     padding-top: .5rem;
     color: #FF5533; }

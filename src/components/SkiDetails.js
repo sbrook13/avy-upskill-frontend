@@ -101,9 +101,7 @@ function SkiDetails({user, selected, setSelected}) {
 
   const showUserButtons = () => {
     if (commentForm || ratingForm) {
-      if(!user) {
-        return <p className="bold">Login to add a comment or rating!</p>
-      }
+      return <></>
     } else {
       return (
         <section >
@@ -121,7 +119,9 @@ function SkiDetails({user, selected, setSelected}) {
   return (
     <section className="stack-sections ski-detail-card">
       <h2>{selected.name}</h2>
-      {showRating()}
+      <div className="star-rating center">
+        {showRating()}
+      </div>
       <p className="bold">Nearest City: {selected.location}</p>
       <p>{selected.description}</p>
       <section className="comment-section">
