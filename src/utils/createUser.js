@@ -16,7 +16,7 @@ export function createUser(e, setUser, userInfo, setIsOpen, handleError){
         getNewUserToken(userInfo, setIsOpen)
           .then(() => getProfile(setUser))
       } else {
-        handleError("Please try again")
+        handleError("Username already exists.")
       }
     })
 }  

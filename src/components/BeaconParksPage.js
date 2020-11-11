@@ -30,8 +30,8 @@ function BeaconParksPage() {
         <a href="https://backcountryaccess.com/" target="_blank">
           <img src="https://content.backcountry.com/promo_upload/bcs/brand/backcountry-access/BCA_Logo.png" alt="Backcountry Access Logo"/>
         </a>
-        <h2>Colorado's Free Beacon Parks</h2>
-        <p>Beacon parks provide an easy, convenient way to practice your skills. The parks are free, open to the public, simple, and always on and available. Each park may be a bit different but all are easy to use and have instructions. They have switches to turn on one or more buried transceivers.</p>
+        <h2>Colorado's Beacon Parks</h2>
+        <p>Beacon parks provide an easy, convenient way to practice your skills. The parks are free, open to the public, simple, and always on and available. Each park may be a bit different but all are easy to use and have instructions. They have switches to turn on one or more buried transceivers so you can hone in your skils.</p>
       </section>
       <div className="split-half">
         <MapContainer markers={markers} subtitle={"Highlight a marker to see Beacon Park location:"} type={"beacon park"} setSelected={setSelected}/>

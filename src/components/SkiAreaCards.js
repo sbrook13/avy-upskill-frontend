@@ -22,10 +22,11 @@ function SkiAreaCards({user, areas, selected, setSelected}) {
             <p>{area.location}</p>
             <p className="rating">****</p>
           </div>
-          <div className="like-button-section stack-sections right-align space-between">
+          {/* <div className="like-button-section stack-sections right-align space-between">
             <FontAwesomeIcon className="like-button" icon={faHeart} size="1x" />
-            {/* <button >Learn More</button> */}
-          </div>
+              <button >Learn More</button>
+            </div> 
+          */}
         </div>
         </>
       )

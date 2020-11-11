@@ -69,13 +69,17 @@ function SkiAreaPage({user}) {
         >
           See List
         </button>
-        <button 
-          className="button" 
-          style={{backgroundColor: viewType === 'add' ? "#FF5533" : "#1a354b"}}
-          onClick={(_) => handleButtonClick(_, setViewType, 'add')}
-        >
-          Add An Area
-        </button>
+        { user ?
+          <button 
+            className="button" 
+            style={{backgroundColor: viewType === 'add' ? "#FF5533" : "#1a354b"}}
+            onClick={(_) => handleButtonClick(_, setViewType, 'add')}
+          >
+            Add An Area
+          </button> :
+          null
+        }
+        
       </section>
       {showViewChoice()}
     </div>

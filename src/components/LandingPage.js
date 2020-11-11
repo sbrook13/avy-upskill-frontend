@@ -20,27 +20,33 @@ function LandingPage() {
         {/* <KnowBeforeYouGo /> */}
         <div className="grid-rows landing-categories">
           <div className="nav-sections">
-            <h2>Education</h2>
-            <p>Find courses from the American Institute for Avalanche Research and Education:</p>
-            <ul>
-              <li>• Avalanche Rescue</li>
-              <li>• AIARE 1</li>
-              <li>• AIARE 2</li>
-            </ul>
+            <div className="stack-sections">
+              <h2>Education</h2>
+              <p>Find courses from the American Institute for Avalanche Research and Education:</p>
+              <ul>
+                <li>• Avalanche Rescue</li>
+                <li>• AIARE 1</li>
+                <li>• AIARE 2</li>
+              </ul>
+            </div>
             <Link to="/courses">
               <button className="button">COURSES</button>
             </Link>
           </div>
           <div className="nav-sections">
-            <h2>Practice</h2>
-            <p>Colorado has many free beacon parks where you can bring your gear (beacon, probe, shovel) and practice your skills to find buried signals.</p>
+            <div className="stack-sections">
+              <h2>Practice</h2>
+              <p>Colorado has many free beacon parks where you can bring your gear (beacon, probe, shovel) and practice your skills to find buried signals.</p>
+            </div>
             <Link to="/beacon-parks">
               <button className="button">BEACON PARKS</button>
             </Link>
           </div>
           <div className="nav-sections">
-            <h2>Experience</h2>
-            <p>Not sure where to go? This community sourced page lists low-angle, relatively safe backcountry zones where you can explore and get used to skiing varied terrain.</p>
+            <div className="stack-sections">
+              <h2>Experience</h2>
+              <p>Not sure where to go? This community sourced page lists low-angle, relatively safe backcountry zones where you can explore and get used to skiing varied terrain.</p>
+            </div>
             <Link to="/backcountry-zones">
               <button className="button">BACKCOUNTRY ZONES</button>
             </Link>

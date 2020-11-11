@@ -19,6 +19,7 @@ function MapContainer({markers, subtitle, type, setSelected}) {
   const handleMarkerClick = (_, marker) => {
     if ( type === "area"){
       setSelected(marker.fullInfo)
+      
     }
   }
 
