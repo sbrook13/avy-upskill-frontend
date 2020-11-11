@@ -75,17 +75,17 @@ function SkiDetails({user, selected, setSelected}) {
   function handleCommentSubmit (e) {
     e.preventDefault()
     const userInput = {user:user.id, area:selected.id, feedback}
-    console.log(userInput)
-    // postToCommentsBackend(userInput)
+    postToCommentsBackend(userInput)
     renderComment(userInput)
   }
 
   function renderComment (commentObject) {
-    console.log("commentObject", commentObject)
-    const newCommentAdded = allComments.push(commentObject)
-    setAllComments(newCommentAdded)
-    console.log("allComments", allComments)
-    showComments()
+    const commentSection = document.querySelector('.comments')
+    const commentForm = document.querySelector('#comment-form')
+    const newComment = document.createElement('p')
+    newComment.innerHTML = commentObject.feedback
+    commentSection.append(newComment)
+    commentForm.reset()
   }
 
   function handleRatingSubmit (e) {
@@ -135,7 +135,8 @@ function SkiDetails({user, selected, setSelected}) {
         { commentForm ?
         <>
           <form 
-            className="stack-sections add-form"
+            id="comment-form"
+            className="stack-sections"
             onSubmit={handleCommentSubmit}
           >
             <input type="text" name="user" value={user.id} hidden />
@@ -160,7 +161,7 @@ function SkiDetails({user, selected, setSelected}) {
         {ratingForm ?
         <>
           <form 
-            className="stack-sections add-form"
+            className="stack-sections rating-form"
             onSubmit={handleRatingSubmit}
           >
             <input type="text" name="user" value={user} hidden />

@@ -137,9 +137,9 @@ button:hover {
 }
 
 .modalBox {
-  width: 40%;
-  height: 50%;
-  margin: 10% auto;
+  width: 30%;
+  height: 45%;
+  margin: 11% auto;
   padding: 2rem;
   position: relative;
   border-radius: 4px;
@@ -269,7 +269,7 @@ button:hover {
 }
 
 .profile-title{
-  background: url('https://i.imgur.com/7S6Bw5p.jpg') no-repeat center center fixed;
+  background: url('https://i.imgur.com/7S6Bw5p.jpg') no-repeat center bottom fixed;
   background-size: 100vw;
   color: white;
   justify-content: center;
@@ -431,12 +431,17 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  position: relative;
+  // position: relative;
 }
 
 
 .left-side {
   width: 35%;
+  
+}
+
+.right-side {
+  width: 60%;
 }
 
 .days-section {
@@ -451,12 +456,13 @@ button:hover {
   color: white;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  transform: translate(-10px);
   .start {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
     height: 8rem;
-    transform: translate(75px);
+    transform: translate(85px);
   }
   .day-count {
     font-size: 75px;
@@ -464,7 +470,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translate(10px, 5px);
+    transform: translate(20px, 5px);
     color: $highlight;
   }
   .end {
@@ -472,7 +478,7 @@ button:hover {
     justify-content: flex-start;
     align-items: flex-end;
     height: 8rem;
-    transform: translate(-55px);
+    transform: translate(-45px);
   }
   .days-text {
     width: 75%
@@ -507,31 +513,37 @@ button:hover {
   width: 90%;
 }
 
-.journal {
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-
 .journal-section {
-  margin: 2rem;
+  width: 93%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .journal-entry {
+    width: 100%;
+  }
 }
 
 .journal-entry {
   border: 1px $dark-color solid;
+  border-radius: 4px;
   padding: .5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   margin: .5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 4fr 4fr 1fr 1fr;
+  grid-gap: 5px;
   min-height: 2.5rem;
   text-align: left;
+  .icon:hover {
+    color: $highlight;
+    text-decoration: none;
+  }
 }
 
 form {
+  
   input {
     padding: .5rem;
     margin: .25rem;
@@ -544,6 +556,16 @@ form {
   label {
     margin-top: .5rem;
   }
+  select {
+    padding: .5rem;
+    width: 20rem;
+    margin-top: .5rem;
+  }
+}
+.rating-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .add-form {
@@ -563,7 +585,9 @@ textarea:focus {
   outline: $highlight;
 }
 
-.current-weather{
+
+
+.current-weather {
   display: flex;
   justify-content: flex-start;
   align-items: center;

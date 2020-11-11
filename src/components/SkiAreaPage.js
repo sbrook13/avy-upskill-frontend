@@ -36,7 +36,7 @@ function SkiAreaPage({user}) {
         case 'list':
           return <SkiAreaCards user={user} areas={backcountryAreas} selected={selected} setSelected={setSelected} />;
         case 'add':
-          return <SkiAreaAddForm user={user} markers={markers} type={"area"} />;
+          return <SkiAreaAddForm user={user} markers={markers} setMarkers={setMarkers} />;
       }
     }
   }

@@ -101,9 +101,9 @@ button:hover {
   text-decoration: none; }
 
 .modalBox {
-  width: 40%;
-  height: 50%;
-  margin: 10% auto;
+  width: 30%;
+  height: 45%;
+  margin: 11% auto;
   padding: 2rem;
   position: relative;
   border-radius: 4px;
@@ -211,7 +211,7 @@ button:hover {
     max-width: 300px; }
 
 .profile-title {
-  background: url("https://i.imgur.com/7S6Bw5p.jpg") no-repeat center center fixed;
+  background: url("https://i.imgur.com/7S6Bw5p.jpg") no-repeat center bottom fixed;
   background-size: 100vw;
   color: white;
   justify-content: center; }
@@ -349,11 +349,13 @@ button:hover {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  position: relative; }
+  align-items: flex-start; }
 
 .left-side {
   width: 35%; }
+
+.right-side {
+  width: 60%; }
 
 .days-section {
   width: 90%;
@@ -366,27 +368,28 @@ button:hover {
   border-radius: 4px;
   color: white;
   padding-top: 1rem;
-  padding-bottom: 1rem; }
+  padding-bottom: 1rem;
+  transform: translate(-10px); }
   .days-section .start {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
     height: 8rem;
-    transform: translate(75px); }
+    transform: translate(85px); }
   .days-section .day-count {
     font-size: 75px;
     font-weight: 900;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translate(10px, 5px);
+    transform: translate(20px, 5px);
     color: #FF5533; }
   .days-section .end {
     display: flex;
     justify-content: flex-start;
     align-items: flex-end;
     height: 8rem;
-    transform: translate(-55px); }
+    transform: translate(-45px); }
   .days-section .days-text {
     width: 75%; }
 
@@ -408,26 +411,30 @@ button:hover {
   margin-left: 2rem;
   width: 90%; }
 
-.journal {
-  margin-left: 2rem;
-  margin-right: 2rem; }
-
 .journal-section {
-  margin: 2rem; }
+  width: 93%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .journal-section .journal-entry {
+    width: 100%; }
 
 .journal-entry {
   border: 1px #1a354b solid;
+  border-radius: 4px;
   padding: .5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   margin: .5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 4fr 4fr 1fr 1fr;
+  grid-gap: 5px;
   min-height: 2.5rem;
   text-align: left; }
+  .journal-entry .icon:hover {
+    color: #FF5533;
+    text-decoration: none; }
 
 form input {
   padding: .5rem;
@@ -440,6 +447,16 @@ form input:focus {
 
 form label {
   margin-top: .5rem; }
+
+form select {
+  padding: .5rem;
+  width: 20rem;
+  margin-top: .5rem; }
+
+.rating-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .add-form {
   margin-top: 1rem; }

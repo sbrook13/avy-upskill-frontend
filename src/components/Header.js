@@ -11,7 +11,6 @@ import {
 
 
 function Header({user, setUser, setIsOpen, type}) {
-
   
   const hoverIcon = (event, selection) => {
     const navBarName = document.querySelector('#nav-name')

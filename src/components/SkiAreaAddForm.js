@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function AddAreaForm() {
+function AddAreaForm({user}, {markers}, {setMarkers}) {
 
   return (
     <section className="add-form">

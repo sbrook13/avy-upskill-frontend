@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTimes, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import React, {useState, useEffect} from 'react';
 import {favURL, daysURL} from '../constants';
 import {reformatDate, captureInput} from '../utils/functions';
@@ -8,6 +10,7 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
   const [journal, setJournal] = useState("")
   const [date, setDate] = useState("")
   const [backcountryDays, setDays] = useState([])
+  const [showJournalDetails, setShowJournal] = useState(false)
 
   useEffect(()=> {
     const loadProfile = () => {
@@ -23,9 +26,19 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
     return backcountryDays.map(day => {
       return (
         <div className="journal-entry">
-          <h4 className="class-title">{reformatDate(day.date)}</h4>
-          <p>{day.location}</p>
-          <p>{day.journal}</p>
+          <div className="show-section">
+            <h4>{reformatDate(day.date)}</h4>
+            <p>{day.location}</p>
+            <div>
+              <FontAwesomeIcon icon={faEdit} className="icon" size="1x" />
+              <FontAwesomeIcon icon={faTimes} className="icon" size="1x" />
+              <FontAwesomeIcon icon={faChevronDown} className="icon" size="1x" />
+            </div>
+          </div>
+          {/* {show ?
+          <p id={day.id}>{day.journal}</p>:
+          null
+          } */}
         </div>
       )
     })
@@ -82,12 +95,12 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
             </form>
           </section>
         </section>
-        <div className="stack-sections right-side">
-          <div className="journal-section stack-sections">
+        <section className="right-side">
+          <div className="journal-section">
             <h4>Your Past Days</h4>
             {showJournal()}
           </div>
-        </div>
+        </section>
       </section>
     </div>
   );
