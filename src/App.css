@@ -419,6 +419,32 @@ button:hover {
   flex-direction: column; }
   .journal-section .journal-entry {
     width: 100%; }
+  .journal-section .show-section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 7fr 3fr;
+    grid-gap: 5px;
+    min-height: 2.5rem;
+    text-align: left;
+    padding-top: .5rem; }
+
+.center-stack {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column; }
+
+.left-stack {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column; }
+
+.right-stack {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column; }
 
 .journal-entry {
   border: 1px #1a354b solid;
@@ -426,15 +452,17 @@ button:hover {
   padding: .5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  margin: .5rem;
-  display: grid;
-  grid-template-columns: 4fr 4fr 1fr 1fr;
-  grid-gap: 5px;
-  min-height: 2.5rem;
-  text-align: left; }
+  margin: .5rem; }
+  .journal-entry .journal-text {
+    padding-top: .5rem;
+    font-size: 11px;
+    line-height: 14px; }
   .journal-entry .icon:hover {
-    color: #FF5533;
-    text-decoration: none; }
+    color: #FF5533; }
+
+.journal-entry:hover {
+  color: white;
+  background-color: #5a778c; }
 
 form input {
   padding: .5rem;

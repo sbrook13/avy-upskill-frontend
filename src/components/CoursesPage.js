@@ -29,6 +29,7 @@ function CoursesPage() {
     let today = new Date()
     const upcoming = allCourses.filter(course => {
       const startDate = new Date (course.start_date)
+      console.log(today, startDate)
       if (startDate >= today){
         return course
       }

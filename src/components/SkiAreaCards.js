@@ -8,7 +8,6 @@ import StarRating from './StarRating'
 function SkiAreaCards({user, areas, selected, setSelected}) {
 
   const handleClick = (_, selection) => {
-    console.log(selection, "was clicked!")
     setSelected(selection)
   }
 
@@ -21,14 +20,12 @@ function SkiAreaCards({user, areas, selected, setSelected}) {
             <h4>{area.name}</h4>
             <p>{area.location}</p>
             <div className="star-rating">
-              <StarRating ratings={area.ratings} />
+              {area.ratings[0] ?
+                <StarRating ratings={area.ratings} /> :
+                <p className="small-text">No Ratings Yet</p>
+              }
             </div>
           </div>
-          {/* <div className="like-button-section stack-sections right-align space-between">
-            <FontAwesomeIcon className="like-button" icon={faHeart} size="1x" />
-              <button >Learn More</button>
-            </div> 
-          */}
         </div>
         </>
       )

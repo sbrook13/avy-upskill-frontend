@@ -28,13 +28,11 @@ function SkiAreaPage({user, history}) {
   }, [])
 
   useEffect(() => {
-    console.log("useEffect areas", backcountryAreas)
     setMarkerFormat(backcountryAreas, setMarkers)
   }, [backcountryAreas])
   
   
   useEffect(() => {
-    console.log("useEffect markers", markers)
     displayMarkers(markers)
   }, [markers])
 
@@ -64,10 +62,6 @@ function SkiAreaPage({user, history}) {
   const handleButtonClick = (event, state, choice) => {
     setSelected(null)
     state(choice)
-  }
-
-  const renderNewArea = (areaInput) => {
-    console.log(areaInput)
   }
 
   return (

@@ -522,6 +522,36 @@ button:hover {
   .journal-entry {
     width: 100%;
   }
+  .show-section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 7fr 3fr;
+    grid-gap: 5px;
+    min-height: 2.5rem;
+    text-align: left;
+    padding-top: .5rem;
+  }
+}
+
+.center-stack {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.left-stack {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.right-stack {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-direction: column;
 }
 
 .journal-entry {
@@ -531,15 +561,19 @@ button:hover {
   padding-left: 1rem;
   padding-right: 1rem;
   margin: .5rem;
-  display: grid;
-  grid-template-columns: 4fr 4fr 1fr 1fr;
-  grid-gap: 5px;
-  min-height: 2.5rem;
-  text-align: left;
+  .journal-text {
+    padding-top: .5rem;
+    font-size: 11px;
+    line-height: 14px;
+  }
   .icon:hover {
     color: $highlight;
-    text-decoration: none;
   }
+}
+
+.journal-entry:hover {
+  color:white;
+  background-color: $medium-color;
 }
 
 form {

@@ -36,7 +36,7 @@ export function setMarkerFormat(allPoints, setFunction) {
 export const reformatDate = (dateToReformat) => {
   let date = new Date(dateToReformat)
   let year = date.getFullYear()
-  let month = date.getMonth()
-  let day = date.getDate()
+  let month = date.getMonth()+1
+  let day = date.getDate()+1
   return `${month}/${day}/${year}`
 }

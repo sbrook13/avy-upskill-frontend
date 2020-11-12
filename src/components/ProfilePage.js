@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTimes, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import React, {useState, useEffect} from 'react';
+import { faEdit, faTimes, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import {favURL, daysURL} from '../constants';
 import {reformatDate, captureInput} from '../utils/functions';
+import {postBackcountryDayToBackend, deleteJournalFromBackend} from '../utils/postToBackend';
 
 function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
 
@@ -10,7 +11,7 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
   const [journal, setJournal] = useState("")
   const [date, setDate] = useState("")
   const [backcountryDays, setDays] = useState([])
-  const [showJournalDetails, setShowJournal] = useState(false)
+  const [showJournalDetails, setShowJournal] = useState([])
 
   useEffect(()=> {
     const loadProfile = () => {
@@ -20,47 +21,68 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
       }
     }
     loadProfile()
-  }, [user, backcountryDays])
+  }, [user])
 
-  const showJournal = () => {
+  useEffect(() => {
+    showJournal(backcountryDays)
+  }, [backcountryDays])
+
+
+  function toggleJournalDetail(_, id){
+    if(showJournalDetails.find(journalId => journalId === id)){
+      const removeFromList = showJournalDetails.filter(journalId => journalId !== id)
+      setShowJournal(removeFromList)
+    } else {
+      setShowJournal([...showJournalDetails, id])
+    }
+  }
+
+  function removeJournalEntry(_, day) {
+    deleteJournalFromBackend(day)
+    const updatedJournals = backcountryDays.filter(existingDay => existingDay.id !== day.id)
+    setDays(updatedJournals)
+  }
+
+  function showJournal(backcountryDays) {
     return backcountryDays.map(day => {
-      return (
-        <div className="journal-entry">
-          <div className="show-section">
-            <h4>{reformatDate(day.date)}</h4>
-            <p>{day.location}</p>
-            <div>
-              <FontAwesomeIcon icon={faEdit} className="icon" size="1x" />
-              <FontAwesomeIcon icon={faTimes} className="icon" size="1x" />
-              <FontAwesomeIcon icon={faChevronDown} className="icon" size="1x" />
-            </div>
-          </div>
-          {/* {show ?
-          <p id={day.id}>{day.journal}</p>:
-          null
-          } */}
-        </div>
-      )
+      return journalEntry(day)
     })
+  }
+
+  const journalEntry = (day) => {
+    return ( 
+      <div className="journal-entry center-stack">
+        <div className="show-section">
+          <h4 className="left-stack">{reformatDate(day.date)}</h4>
+          <div className="center-stack">
+            <p>{day.location.toUpperCase()}</p>
+            { showJournalDetails.includes(day.id) ?
+            <FontAwesomeIcon icon={faChevronUp} className="icon" size="1x" onClick={(_) => toggleJournalDetail(_, day.id)} /> :
+            <FontAwesomeIcon icon={faChevronDown} className="icon" size="1x" onClick={(_) => toggleJournalDetail(_, day.id)} /> }
+          </div>
+          <div className="right-stack">
+            <FontAwesomeIcon icon={faTimes} className="icon" size="1x" onClick={(_) => removeJournalEntry(_, day)}/>
+          </div>
+        </div>
+        {showJournalDetails.includes(day.id) ?
+        <p className="journal-text">{day.journal}</p>:
+        null
+        }
+      </div>
+    )
   }
 
   const handleSubmit = (e) => {
-    let user = user.id
-    const journalInput = { user, location, date, journal}
+    const journalInput = { user:user.id, location, date, journal}
     e.preventDefault()
-    fetch(daysURL, {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json', 
-        'Authorization': `Bearer ${localStorage.token}`
-      },
-      body: JSON.stringify(journalInput)
-    })
-    addJournalToDisplay(journalInput)
+    console.log(journalInput)
+    postBackcountryDayToBackend(journalInput)
+     .then(addJournalToDisplay(journalInput))
   }
 
   const addJournalToDisplay = (journalInput) => {
-    setDays(...backcountryDays, journalInput)
+    const journalwithFakeID = {...journalInput, id:999}
+    setDays([...backcountryDays, journalwithFakeID])
   }
 
   const dayCounter = () => {
@@ -98,7 +120,7 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
         <section className="right-side">
           <div className="journal-section">
             <h4>Your Past Days</h4>
-            {showJournal()}
+            {showJournal(backcountryDays)}
           </div>
         </section>
       </section>
