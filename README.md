@@ -1,70 +1,174 @@
-# Getting Started with Create React App
+# AvyUpskill
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An React website application to integrate backcountry skiing resources and information in Colorado.
 
-## Available Scripts
+# Table Of Contents 
+- [Description](https://github.com/sbrook13/avy-upskill-frontend#description)
+- [How It Works (gifs)](https://github.com/sbrook13/avy-upskill-frontend#how-it-works)
+- [Example Code](https://github.com/sbrook13/avy-upskill-frontend#example-code)
+- [Technology Used](https://github.com/sbrook13/avy-upskill-frontend#technology-used)
+- [Setting up for the Application](https://github.com/sbrook13/avy-upskill-frontend#setting-up-for-the-application)
+- [Main Features](https://github.com/sbrook13/avy-upskill-frontend#main-features)
+- [Features in Progress](https://github.com/sbrook13/avy-upskill-frontend#features-in-progress)
+- [Contact Information](https://github.com/sbrook13/avy-upskill-frontend#contact-information)
+- [Link to Backend Repo](https://github.com/sbrook13/avy-upskill-frontend#link-to-backend-repo)
 
-In the project directory, you can run:
+## Description
 
-### `yarn start`
+AvyUpskill is the one-stop-shop for backcountry skiing information in Colorado, in order to educate and empower novice backcountry skiers who don't know where to begin. Guests can get a quick weather report, find upcoming courses to increase their knowledge, beacon parks to practice their skills, low angle zones to get out relatively safely, and link to the CAIC avalanche forecast. Users can login to add comments and provide ratings on those backcountry-zones, as well as log their backcountry days with a journal entry.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Main Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- User can login or signup with django-restframework-jwt authentication.
+- User can record their backcountry days with a journal entry.
+- User can add comments / ratings for backcountry ski zones.
+- Guests and Users can see upcoming courses, beacon parks, and backcountry zones in Colorado.
 
-### `yarn test`
+## How It Works
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Landing Page
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Landing Page](https://media0.giphy.com/media/O0njrtdNFN5rjdwJ2E/giphy.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Login or Signup
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Login or Signup](https://media4.giphy.com/media/N9hyNTCfXPxuet8m83/giphy.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Learn about AIARE courses
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+![Courses](https://media4.giphy.com/media/sW0fuZX1RcZ0OFakYB/giphy.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Filter AIARE courses by type and/or provider
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Filter Courses](https://media2.giphy.com/media/5IZmzBGvzwudp3xCdT/giphy.gif)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### See Beacon Parks on Map
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Beacon Parks](https://media1.giphy.com/media/IoHkyHBQ06Kpq98B2P/giphy.gif)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### See Backcountry Ski Areas on Map or List
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+![Backcountry Zones](https://media0.giphy.com/media/xzb1hQZ7S1Qh2ASUQW/giphy.gif)
 
-### `yarn build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Add a comment on an existing area
+
+
+![Backcountry-Zones](https://media0.giphy.com/media/ZhdsI01dhcEP3VLFnA/giphy.gif)
+
+
+### Add another area to the list!
+
+
+![Add Area](https://media1.giphy.com/media/sXuEFuMVfaWlUAP6ci/giphy.gif)
+
+
+## Example Code 
+
+Set Marker Format for the Maps:
+```
+export function setMarkerFormat(allPoints, setFunction) {
+  let cumulativeArray =[]
+  allPoints.map(point => {
+    let marker = {
+      markerOffset: -30,
+      name: `${point.name}`,
+      coordinates: [parseFloat(point.lon), parseFloat(point.lat)],
+      fullInfo: point
+    }
+    cumulativeArray = [...cumulativeArray, marker]
+  })
+  setFunction(cumulativeArray)
+}
+```
+
+Filtering Course Options
+```
+const filterCourses = () => {
+    const messageLine = document.querySelector('.bad-search')
+    messageLine.innerHTML = ""
+    if (selectedCourseType === null && selectedProvider === null){
+      setFilteredList(courses)
+    } else {
+      if (selectedProvider === null) {
+        const filteredCourses = courses.filter(course => course.class_type === selectedCourseType)
+        setFilteredList(filteredCourses)
+      } else if (selectedCourseType === null) {
+        const filteredCourses = courses.filter(course => course.provider === selectedProvider)
+        setFilteredList(filteredCourses)
+      } else {
+        const filteredByCourseType = courses.filter(course => course.class_type === selectedCourseType)
+        const secondFilterByProvider = filteredByCourseType.filter(course => course.provider === selectedProvider)
+        if (secondFilterByProvider.length === 0){
+          console.log("DOES NOT EXIST!")
+          const messageLine = document.querySelector('.bad-search')
+          messageLine.innerHTML = "Sorry, that combination does not exist. Try again!"
+        } else {
+          setFilteredList(secondFilterByProvider)
+        }
+      }  
+    }
+  }
+```
+
+Calculate Ratings
+```
+function calculateRating() {
+    if(selected.ratings[0]){
+      const ratingsOnly = selected.ratings.map(ratingObject => { 
+        return parseInt(ratingObject.rating)
+      })
+      const total = ratingsOnly.reduce((a,b) => {
+        return a+b
+      })
+      const average = total/ratingsOnly.length
+      return <StarRating average={average} />
+    } else {
+      return <p>No Ratings Yet</p>
+    }
+  }
+```
+
+## Setting up for the application
+
+To start the server run
+
+``` 
+    npm-start 
+```
+
+## Technology Used
+
+- React
+- React-Simple-Maps
+- Javascript
+- HTML
+- CSS
+
+## Features in Progress
+
+- Connect with other users to share information, plan ski days, and learn together. 
+- Integrate Avalanche Forecast information directly on the page. 
+
+## Contact Information
+
+Created by [Shelley Brook](https://www.linkedin.com/in/sbrook13/)
+
+## Link to Live Site
+
+https://avyupskill.firebaseapp.com/
+
+## Link to Backend Repo
+
+https://github.com/sbrook13/avy_upskill_backend
