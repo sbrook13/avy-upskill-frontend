@@ -257,7 +257,7 @@ button:hover {
   text-align: center;
   position: relative;
   z-index: 1;
-  margin-top: 11.25rem;
+  margin-top: 11rem;
   width: 100%; }
 
 .image-bar img {
@@ -410,6 +410,8 @@ button:hover {
 .backcountry-form {
   margin-left: 2rem;
   width: 90%; }
+  .backcountry-form h4 {
+    margin-top: 1rem; }
 
 .journal-section {
   width: 93%;
@@ -455,7 +457,7 @@ button:hover {
   margin: .5rem; }
   .journal-entry .journal-text {
     padding-top: .5rem;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 14px; }
   .journal-entry .icon:hover {
     color: #FF5533; }
@@ -538,6 +540,7 @@ textarea:focus {
   border-radius: 4px;
   padding: 2rem;
   width: 50%;
+  text-align: left;
   box-shadow: 6px 6px 12px 6px rgba(189, 189, 189, 0.39); }
   .details-card p {
     line-height: 24px; }

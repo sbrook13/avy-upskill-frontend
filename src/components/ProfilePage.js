@@ -75,7 +75,8 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
   const handleSubmit = (e) => {
     const journalInput = { user:user.id, location, date, journal}
     e.preventDefault()
-    console.log(journalInput)
+    const dayForm = document.querySelector('#day-form')
+    dayForm.reset()
     postBackcountryDayToBackend(journalInput)
      .then(addJournalToDisplay(journalInput))
   }
@@ -105,14 +106,14 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
             <h3 className="end">days this season!</h3>
           </div>
           <section className="backcountry-form">
-            <h3>Log Your Backcountry Days:</h3>
-            <form className="stack-sections" onSubmit={(_) => handleSubmit(_)}>
+            <h4>Log Your Backcountry Days:</h4>
+            <form className="stack-sections" id="day-form" onSubmit={(_) => handleSubmit(_)}>
               <label for="date">When</label>
               <input type="date" id="date" name="date" placeholder="2020-12-15" onChange={(_) => captureInput(_, setDate)} />
               <label for="location">Where</label>
               <input type="text" id="location" name="location" placeholder="ex: Red Mountain Pass" onChange={(_) => captureInput(_, setLocation)} />
               <label for="journal">Journal</label>
-              <textarea rows="5" cols="30" id="journal" name="journal" className="text-input" placeholder="What did you see? What did you do?" onChange={(_) => captureInput(_, setJournal)}/>
+              <textarea rows="5" cols="30" id="journal" name="journal" className="text-input" placeholder="Who were you with? What did you see / do?" onChange={(_) => captureInput(_, setJournal)}/>
               <button type="submit" className="button">Submit</button>
             </form>
           </section>
