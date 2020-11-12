@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faStar } from '@fortawesome/free-solid-svg-icons';
 import { captureInput } from '../utils/functions'
-import { postToCommentsBackend, postToRatingsBackend } from '../utils/postFeedback'
+import { postToCommentsBackend, postToRatingsBackend } from '../utils/postToBackend'
 import StarRating from './StarRating'
 
 function SkiDetails({user, selected, setSelected}) {
@@ -39,24 +39,20 @@ function SkiDetails({user, selected, setSelected}) {
   }
 
   function calculateRating() {
-    const ratingsOnly = selected.ratings.map(ratingObject => { 
-      return parseInt(ratingObject.rating)
-    })
-    const total = ratingsOnly.reduce((a,b) => {
-      return a+b
-    })
-    const average = total/ratingsOnly.length
-    return <StarRating average={average} />
+    if(selected.ratings[0]){
+      const ratingsOnly = selected.ratings.map(ratingObject => { 
+        return parseInt(ratingObject.rating)
+      })
+      const total = ratingsOnly.reduce((a,b) => {
+        return a+b
+      })
+      const average = total/ratingsOnly.length
+      return <StarRating average={average} />
+    } else {
+      return <p>No Ratings Yet</p>
+    }
   }
-
-  // const showCommentSection = () => {
-  //   return (
-  //     <>
-  //       {/* {showComments} */}
-        
-  //   )
-  // }
-
+  
   const showCommentForm = () => {
     setShowCommentForm(true)
     setShowRatingForm(false)
@@ -153,7 +149,7 @@ function SkiDetails({user, selected, setSelected}) {
             <button type="submit" className="button ">Submit Comment</button>
           </form>
           <button className="button back-button" onClick={showCommentSection}> 
-            Back to Comments
+            Back to Area Details
           </button>
         </> :
         null
@@ -177,7 +173,7 @@ function SkiDetails({user, selected, setSelected}) {
             <button type="submit" className="button">Submit Rating</button>
           </form>
           <button className="button" onClick={showCommentSection}> 
-            Back
+            Back to Area Details
           </button>
         </> :
         null

@@ -6,17 +6,12 @@ import CourseDetails from './CourseDetails'
 class CoursesList extends React.Component {
 
   state = {
-    page: null,
-  }
-
-  componentDidMount(){
-    this.props.setCoursesToDisplay(this.props.filteredList.slice(0,10))
-    this.setState({page:1})
+    page: 1,
   }
 
   componentDidUpdate(props){
     if (this.props.filteredList !== props.filteredList){
-      this.props.setCoursesToDisplay(this.props.filteredList.slice(0,10))
+      this.props.setCoursesToDisplay(this.props.filteredList.slice(0,15))
     }
   }
 

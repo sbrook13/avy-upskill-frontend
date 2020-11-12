@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import ReactTooltip from 'react-tooltip';
 import MapContainer from './MapContainer';
 import BeaconParkList from './BeaconParkList';
-import {setMarkersFromBackend, handleSetStateOnClick, parseJSON} from '../utils/functions'
+import {setMarkerFormat, handleSetStateOnClick, parseJSON} from '../utils/functions'
 import {parksURL} from '../constants';
 
 function BeaconParksPage() {
@@ -17,7 +17,7 @@ function BeaconParksPage() {
         .then(parseJSON)
         .then(data => {
           setBeaconParks(data)
-          setMarkersFromBackend(data, setMarkers)
+          setMarkerFormat(data, setMarkers)
         })
         .catch() 
     }

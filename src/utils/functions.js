@@ -19,7 +19,7 @@ export const handleSetStateOnClick = (event, state, choice) => {
   state(choice)
 }
 
-export const setMarkersFromBackend = (allPoints, setFunction) => {
+export function setMarkerFormat(allPoints, setFunction) {
   let cumulativeArray =[]
   allPoints.map(point => {
     let marker = {

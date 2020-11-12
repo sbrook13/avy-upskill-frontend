@@ -3,10 +3,11 @@ import SkiAreaAddForm from './SkiAreaAddForm';
 import SkiAreaCards from './SkiAreaCards';
 import SkiDetails from './SkiDetails';
 import MapContainer from './MapContainer';
-import {setMarkersFromBackend, handleSetStateOnClick, parseJSON} from '../utils/functions'
+import {setMarkerFormat, handleSetStateOnClick, parseJSON} from '../utils/functions'
 import {areasURL} from '../constants'
+import { displayMarkers } from '../utils/displayMarkers';
 
-function SkiAreaPage({user}) {
+function SkiAreaPage({user, history}) {
 
   const [viewType, setViewType] = useState("map")
   const [backcountryAreas, setBackcountryAreas] = useState([])
@@ -19,12 +20,23 @@ function SkiAreaPage({user}) {
         .then(parseJSON)
         .then(data => {
           setBackcountryAreas(data)
-          setMarkersFromBackend(data, setMarkers)
+          setMarkerFormat(data, setMarkers)
         })
         .catch() 
     }
     fetchAreasData()
   }, [])
+
+  useEffect(() => {
+    console.log("useEffect areas", backcountryAreas)
+    setMarkerFormat(backcountryAreas, setMarkers)
+  }, [backcountryAreas])
+  
+  
+  useEffect(() => {
+    console.log("useEffect markers", markers)
+    displayMarkers(markers)
+  }, [markers])
 
   const showViewChoice = () => {
     if (selected) {
@@ -36,7 +48,15 @@ function SkiAreaPage({user}) {
         case 'list':
           return <SkiAreaCards user={user} areas={backcountryAreas} selected={selected} setSelected={setSelected} />;
         case 'add':
-          return <SkiAreaAddForm user={user} markers={markers} setMarkers={setMarkers} />;
+          return <SkiAreaAddForm 
+            user={user} 
+            backcountryAreas={backcountryAreas} 
+            setBackcountryAreas={setBackcountryAreas} 
+            markers={markers}
+            setMarkers={setMarkers} 
+            history={history} 
+            type={setViewType}
+          />;
       }
     }
   }
@@ -44,6 +64,10 @@ function SkiAreaPage({user}) {
   const handleButtonClick = (event, state, choice) => {
     setSelected(null)
     state(choice)
+  }
+
+  const renderNewArea = (areaInput) => {
+    console.log(areaInput)
   }
 
   return (
