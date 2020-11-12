@@ -118,7 +118,7 @@ function SkiDetails({user, selected, setSelected}) {
       <div className="star-rating center">
         {showRating()}
       </div>
-      <p className="bold">Nearest City: {selected.location}</p>
+      <p className="bold">Near: {selected.location}</p>
       <p>{selected.description}</p>
       <section className="comment-section">
         <p className="bold">Comments</p>

@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import {parseJSON, handleError} from '../utils/functions'
 import WeatherContainer from './WeatherContainer'
 import KnowBeforeYouGo from './Kbyg'
 

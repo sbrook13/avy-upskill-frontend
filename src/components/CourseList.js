@@ -79,7 +79,7 @@ class CoursesList extends React.Component {
             showAllCourses={this.props.showAllCourses}
           /> : 
           <>
-            <h3>All 2020/2021 Avalanche Courses in Colorado</h3>
+            <h3>Upcoming Avalanche Courses in Colorado</h3>
             <CourseFilter 
               courses={this.props.courses} 
               selected={this.props.selected} 
