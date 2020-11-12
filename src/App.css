@@ -210,6 +210,10 @@ button:hover {
   .page-title img {
     max-width: 300px; }
 
+.footer-icon {
+  margin-top: .5rem;
+  margin-right: .5rem; }
+
 .profile-title {
   background: url("https://i.imgur.com/7S6Bw5p.jpg") no-repeat center bottom fixed;
   background-size: 100vw;
