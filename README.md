@@ -161,10 +161,6 @@ To start the server run
 - Connect with other users to share information, plan ski days, and learn together. 
 - Integrate Avalanche Forecast information directly on the page. 
 
-## Contact Information
-
-Created by [Shelley Brook](https://www.linkedin.com/in/sbrook13/)
-
 ## Link to Live Site
 
 https://avyupskill.firebaseapp.com/
@@ -172,3 +168,7 @@ https://avyupskill.firebaseapp.com/
 ## Link to Backend Repo
 
 https://github.com/sbrook13/avy_upskill_backend
+
+## Contact Information
+
+Created by [Shelley Brook](https://www.linkedin.com/in/sbrook13/)
