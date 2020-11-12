@@ -29,7 +29,7 @@ function CourseFilter(props) {
 
   const filterCourses = () => {
     const messageLine = document.querySelector('.bad-search')
-          messageLine.innerHTML = ""
+    messageLine.innerHTML = ""
     if (selectedCourseType === null && selectedProvider === null){
       setFilteredList(courses)
     } else {
