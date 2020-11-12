@@ -11,7 +11,6 @@ import {
 
 
 function Header({user, setUser, setIsOpen, type}) {
-
   
   const hoverIcon = (event, selection) => {
     const navBarName = document.querySelector('#nav-name')
@@ -42,7 +41,7 @@ function Header({user, setUser, setIsOpen, type}) {
         <div className="stack-sections right-align">
           {user ? 
             <div className="spreads=-section">
-              <p className="small-text">Logged in as <span className="bold">{user.username}</span></p>
+              <p className="small-text">Logged in as <span className="bold">{user.username.toUpperCase()}</span></p>
               <button className="login-button" onClick={() => handleLogoutClick()}>Logout</button> 
             </div>: 
             <div>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ComposableMap,
   ZoomableGroup,
@@ -8,7 +8,7 @@ import {
   Marker,
 } from "react-simple-maps";
 import {coCities} from '../constants'
-import {setMarkers, setCityMarkers} from '../utils/setMarkers'
+import {displayMarkers, setCityMarkers} from '../utils/displayMarkers'
 
 const geoUrl = "./co_w_counties.json";
 
@@ -19,9 +19,12 @@ function MapContainer({markers, subtitle, type, setSelected}) {
   const handleMarkerClick = (_, marker) => {
     if ( type === "area"){
       setSelected(marker.fullInfo)
-      
     }
   }
+
+  useEffect(() => {
+    displayMarkers(markers)
+  }, [markers])
 
   return (
     <div className="MapContainer stack-sections" >
@@ -71,7 +74,7 @@ function MapContainer({markers, subtitle, type, setSelected}) {
                 }
               </Geographies>
               {setCityMarkers(coCities)}
-              {setMarkers(markers, setMarkerName, handleMarkerClick)}
+              {displayMarkers(markers, setMarkerName, handleMarkerClick)}
             </ZoomableGroup>
           </ComposableMap> 
       </div>

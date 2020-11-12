@@ -19,7 +19,7 @@ export const handleSetStateOnClick = (event, state, choice) => {
   state(choice)
 }
 
-export const setMarkersFromBackend = (allPoints, setFunction) => {
+export function setMarkerFormat(allPoints, setFunction) {
   let cumulativeArray =[]
   allPoints.map(point => {
     let marker = {
@@ -36,7 +36,7 @@ export const setMarkersFromBackend = (allPoints, setFunction) => {
 export const reformatDate = (dateToReformat) => {
   let date = new Date(dateToReformat)
   let year = date.getFullYear()
-  let month = date.getMonth()
-  let day = date.getDate()
+  let month = date.getMonth()+1
+  let day = date.getDate()+1
   return `${month}/${day}/${year}`
 }

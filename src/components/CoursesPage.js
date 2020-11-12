@@ -17,21 +17,32 @@ function CoursesPage() {
       fetch(`${coursesURL}`)
         .then(parseJSON)
         .then(data => {
-          setCourses(data)
+          upcomingCourses(data)
           findProviders(data)
-          setFilteredList(data)
-          setCoursesToDisplay(data.slice(0,15))
         })
         .catch() 
     }
     fetchAreasData()
   }, [])
 
+  function upcomingCourses (allCourses) {
+    let today = new Date()
+    const upcoming = allCourses.filter(course => {
+      const startDate = new Date (course.start_date)
+      console.log(today, startDate)
+      if (startDate >= today){
+        return course
+      }
+    })
+    setCourses(upcoming)
+    setCoursesToDisplay(upcoming.slice(0,15))
+    setFilteredList(upcoming)
+  }
+
   const showAllCourses = () => {
     setFilteredList(courses)
     setSelected(null)
   }
-
 
   const courseTypes = [
     {type: "Avalanche Rescue",

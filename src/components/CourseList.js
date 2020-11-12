@@ -6,21 +6,17 @@ import CourseDetails from './CourseDetails'
 class CoursesList extends React.Component {
 
   state = {
-    page: null,
-  }
-
-  componentDidMount(){
-    this.props.setCoursesToDisplay(this.props.filteredList.slice(0,10))
-    this.setState({page:1})
+    page: 1,
   }
 
   componentDidUpdate(props){
     if (this.props.filteredList !== props.filteredList){
-      this.props.setCoursesToDisplay(this.props.filteredList.slice(0,10))
+      this.props.setCoursesToDisplay(this.props.filteredList.slice(0,15))
     }
   }
 
   displayCourses = () => {
+    console.log(this.props.coursesToDisplay)
     return this.props.coursesToDisplay.map(course => {
       return (
         <div className="list-item" 
@@ -83,7 +79,7 @@ class CoursesList extends React.Component {
             showAllCourses={this.props.showAllCourses}
           /> : 
           <>
-            <h3>Upcoming Avalanche Courses in Colorado</h3>
+            <h3>All 2020/2021 Avalanche Courses in Colorado</h3>
             <CourseFilter 
               courses={this.props.courses} 
               selected={this.props.selected} 

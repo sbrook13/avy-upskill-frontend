@@ -1,6 +1,6 @@
 import { Marker } from "react-simple-maps";
 
-export function setMarkers(markers, setFunction, handleMarkerClick) {
+export function displayMarkers(markers, setFunction, handleMarkerClick) {
   return markers.map(marker => {
     return (
       <Marker 
