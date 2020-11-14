@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { handleSetStateOnClick, reformatDate } from '../utils/functions';
+import React from 'react';
+import { reformatDate } from '../utils/functions'
 
 function CourseDetail({selected, showAllCourses}) {
   

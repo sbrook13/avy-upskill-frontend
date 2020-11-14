@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {handleChange, setMarkerFormat} from '../utils/functions'
-import { postAreaToBackend } from '../utils/postToBackend';
+import { postToBackend } from '../utils/postToBackend';
+import { areasURL } from '../constants';
 import {displayMarkers} from '../utils/displayMarkers'
 
 
@@ -16,7 +17,7 @@ function SkiAreaAddForm({user, backcountryAreas, setBackcountryAreas, markers, s
     event.preventDefault()
     const areaInfo = { name, location, lat, lon, description }
     renderArea(areaInfo)
-    postAreaToBackend(areaInfo)
+    postToBackend(areaInfo, areasURL, "POST")
     const areaForm = document.querySelector('#add-area-form')
     areaForm.reset() 
     type("map")

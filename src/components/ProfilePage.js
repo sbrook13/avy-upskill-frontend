@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTimes, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import React, {useState, useEffect, useLayoutEffect} from 'react';
-import {favURL, daysURL} from '../constants';
+import { daysURL } from '../constants';
 import {reformatDate, captureInput} from '../utils/functions';
-import {postBackcountryDayToBackend, deleteJournalFromBackend} from '../utils/postToBackend';
+import {postToBackend, deleteFromBackend} from '../utils/postToBackend';
 
 function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
 
@@ -38,7 +38,7 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
   }
 
   function removeJournalEntry(_, day) {
-    deleteJournalFromBackend(day)
+    deleteFromBackend(daysURL, day.id)
     const updatedJournals = backcountryDays.filter(existingDay => existingDay.id !== day.id)
     setDays(updatedJournals)
   }
@@ -77,7 +77,7 @@ function ProfilePage({user, userSavedAreas, setUserSavedAreas}) {
     e.preventDefault()
     const dayForm = document.querySelector('#day-form')
     dayForm.reset()
-    postBackcountryDayToBackend(journalInput)
+    postToBackend(journalInput, daysURL)
      .then(addJournalToDisplay(journalInput))
   }
 

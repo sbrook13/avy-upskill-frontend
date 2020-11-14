@@ -36,8 +36,6 @@ class CoursesList extends React.Component {
     })
   }
 
-  
-
   displayButtons = () => {
     let totalPages = Math.ceil(this.props.filteredList.length/15)
     let i=1
@@ -82,13 +80,8 @@ class CoursesList extends React.Component {
             <h3>Upcoming Avalanche Courses in Colorado</h3>
             <CourseFilter 
               courses={this.props.courses} 
-              selected={this.props.selected} 
-              setSelected={this.props.setSelected} 
               providers={this.props.providers} 
-              displayCourses={this.props.displayCourses}
               setFilteredList={this.props.setFilteredList}
-              filteredList={this.props.filteredList} 
-              showAllCourses={this.props.showAllCourses}
             /> 
             <div>
               {this.displayButtons()}

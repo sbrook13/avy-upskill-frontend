@@ -5,10 +5,6 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 function Footer() {
   
-  const hoverIcon = (event, selection) => {
-
-  }
-
   return (
     <div className="footer">
       <div className="stack-sections">

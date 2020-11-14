@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { captureInput } from '../utils/functions'
-import { postToCommentsBackend, postToRatingsBackend } from '../utils/postToBackend'
+import { commentsURL, ratingsURL } from '../constants'
+import { postToBackend } from '../utils/postToBackend'
 import StarRating from './StarRating'
 
 function SkiDetails({user, selected, setSelected}) {
@@ -71,7 +72,7 @@ function SkiDetails({user, selected, setSelected}) {
   function handleCommentSubmit (e) {
     e.preventDefault()
     const userInput = {user:user.id, area:selected.id, feedback}
-    postToCommentsBackend(userInput)
+    postToBackend(userInput, commentsURL)
     renderComment(userInput)
   }
 
@@ -87,12 +88,7 @@ function SkiDetails({user, selected, setSelected}) {
   function handleRatingSubmit (e) {
     e.preventDefault()
     const userInput = {user:user.id, area:selected.id, rating}
-    postToRatingsBackend(userInput)
-    renderRating(userInput)
-  }
-
-  function renderRating (ratingObject) {
-    console.log(ratingObject)
+    postToBackend(userInput, ratingsURL)
   }
 
   const showUserButtons = () => {

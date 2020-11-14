@@ -21,7 +21,6 @@ function LoginOrSignupForm({setUser, type, setIsOpen}) {
     const errorMessage = document.querySelector('.login-error')
     errorMessage.innerHTML = error
   }
-  
 
   return (
     <div className="login-form">
