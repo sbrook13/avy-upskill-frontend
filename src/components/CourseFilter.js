@@ -1,19 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import { handleSetStateOnClick } from '../utils/functions';
 
 function CourseFilter(props) {
-  const {
-    courses, 
-    providers, 
-    displayCourses, 
-    filteredList, 
-    setFilteredList, 
-    showAllCourses
-  } = props
+  const { courses, providers, setFilteredList } = props
   
-  const [page, setPage] = useState(1)
   const [selectedCourseType, setSelectedCourseType] = useState(null)
   const [selectedProvider, setSelectedProvider] = useState(null)
+
+  useEffect(() => {
+    filterCourses()
+  }, [selectedCourseType, selectedProvider])
 
   const filterChoice = (event, setFunction) => {
     const input = event.target.value
@@ -23,9 +18,6 @@ function CourseFilter(props) {
       setFunction(input)
     }
   }
-  useEffect(() => {
-    filterCourses()
-  }, [selectedCourseType, selectedProvider])
 
   const filterCourses = () => {
     const messageLine = document.querySelector('.bad-search')

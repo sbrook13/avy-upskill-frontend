@@ -50,8 +50,6 @@ function SkiAreaPage({user, history}) {
             user={user} 
             backcountryAreas={backcountryAreas} 
             setBackcountryAreas={setBackcountryAreas} 
-            markers={markers}
-            setMarkers={setMarkers} 
             history={history} 
             type={setViewType}
           />;

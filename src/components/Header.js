@@ -18,18 +18,15 @@ function Header({user, setUser, setIsOpen, type}) {
   }
 
   const handleLoginOrSignupClick = (_, option) => {
-    console.log(option, "was clicked!")
     type(option)
     setIsOpen(true)
   }
-
 
   const handleLogoutClick = () => {
     setUser(null)
     localStorage.clear()
     window.location.href = '/'
   }
-
 
   return (
     <div className="header">
