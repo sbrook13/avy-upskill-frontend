@@ -51,7 +51,8 @@ section {
   border: none;
   margin-left: .2rem;
   margin-right: .2rem;
-  min-width: 5rem; }
+  min-width: 5rem;
+  cursor: pointer; }
 
 .small-text {
   font-size: 10px;
@@ -197,6 +198,12 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-end; }
+  .title a:link {
+    color: #1a354b;
+    text-decoration: none; }
+  .title a:visited {
+    color: #1a354b;
+    text-decoration: none; }
 
 .page-title {
   margin-top: 2rem;
@@ -251,7 +258,7 @@ button:hover {
   text-align: center;
   position: relative;
   z-index: 1;
-  margin-top: 9rem;
+  margin-top: 8rem;
   width: 100%; }
 
 .landing-page {
@@ -262,7 +269,7 @@ button:hover {
   text-align: center;
   position: relative;
   z-index: 1;
-  margin-top: 11rem;
+  margin-top: 9rem;
   width: 100%; }
 
 .image-bar img {
@@ -364,10 +371,13 @@ button:hover {
 
 .days-section {
   width: 90%;
+  padding: 2rem;
   padding-right: 4rem;
+  padding-left: 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   text-align: right;
   background: #1a354b;
   border-radius: 4px;
@@ -375,26 +385,29 @@ button:hover {
   padding-top: 1rem;
   padding-bottom: 1rem;
   transform: translate(-10px); }
+  .days-section h3 {
+    margin: 0; }
   .days-section .start {
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    height: 8rem;
-    transform: translate(85px); }
+    justify-content: flex-start;
+    align-items: flex-end;
+    transform: translate(65px);
+    margin-bottom: 0rem; }
   .days-section .day-count {
     font-size: 75px;
     font-weight: 900;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translate(20px, 5px);
-    color: #FF5533; }
+    color: #FF5533;
+    transform: translate(10px); }
   .days-section .end {
+    width: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    height: 8rem;
-    transform: translate(-45px); }
+    justify-content: flex-end;
+    align-items: flex-start;
+    transform: translate(-35px); }
   .days-section .days-text {
     width: 75%; }
 
@@ -644,7 +657,8 @@ textarea:focus {
     border: none;
     margin-left: .2rem;
     margin-right: .2rem;
-    min-width: 5rem; }
+    min-width: 5rem;
+    cursor: pointer; }
   .area-cards a {
     font-size: 11px; }
   .area-cards p, .area-cards h4 {

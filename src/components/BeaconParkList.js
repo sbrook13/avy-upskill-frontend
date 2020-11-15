@@ -1,10 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function BeaconParkList({beaconParks}) {
-
-  const handleClick = (_, selection) => {
-
-  }
   
   const listBeaconParks = () => {
     const sortedList = beaconParks.sort(function(a, b) {

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {parseJSON, handleError} from '../utils/functions'
+import {parseJSON} from '../utils/functions'
 import {windDirection, unixConversion} from '../utils/weather'
 import {weatherURL} from '../constants'
 

@@ -10,7 +10,7 @@ function LoginOrSignupForm({setUser, type, setIsOpen}) {
 
   function handleSubmit(event){
     const userInfo = { username, password }
-    if (type == "Login"){
+    if (type === "Login"){
       loginUser(event, setUser, userInfo, setIsOpen, handleError)
     } else {
       createUser(event, setUser, userInfo, setIsOpen, handleError)

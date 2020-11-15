@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import {handleChange, setMarkerFormat} from '../utils/functions'
+import {handleChange} from '../utils/functions'
 import { postToBackend } from '../utils/postToBackend';
 import { areasURL } from '../constants';
-import {displayMarkers} from '../utils/displayMarkers'
 
 
-function SkiAreaAddForm({user, backcountryAreas, setBackcountryAreas, markers, setMarkers, history, type}) {
+function SkiAreaAddForm({user, backcountryAreas, setBackcountryAreas, history, type}) {
 
   const [name, setNameInput] = useState("")
   const [location, setLocationInput] = useState("")

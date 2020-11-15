@@ -19,10 +19,10 @@ function CourseDetail({selected, showAllCourses}) {
         </div>
       </div>
       <div className="spread-buttons">
-        <a href={selected.details_url} target="_blank">
+        <a href={selected.details_url} target="_blank" rel="noreferrer">
           <button className="button no-side-margin">Register</button>
         </a>
-        <a href={selected.aiare_url} target="_blank">
+        <a href={selected.aiare_url} target="_blank" rel="noreferrer">
           <button className="button no-side-margin" >{selected.class_type} Details</button>
         </a>
       </div>

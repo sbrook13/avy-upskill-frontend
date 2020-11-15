@@ -53,6 +53,8 @@ function SkiAreaPage({user, history}) {
             history={history} 
             type={setViewType}
           />;
+        default:
+          return <MapContainer markers={markers} subtitle={"Click to learn more about skiing at:"} type={"area"} setSelected={setSelected}/>;
       }
     }
   }

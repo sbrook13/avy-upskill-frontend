@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import ReactTooltip from 'react-tooltip';
 import MapContainer from './MapContainer';
 import BeaconParkList from './BeaconParkList';
 import {setMarkerFormat, handleSetStateOnClick, parseJSON} from '../utils/functions'
@@ -27,7 +26,7 @@ function BeaconParksPage() {
   return (
     <div className="BeaconParks main-section">
       <section className="page-title beacon-title">
-        <a href="https://backcountryaccess.com/" target="_blank">
+        <a href="https://backcountryaccess.com/" target="_blank" rel="noreferrer">
           <img src="https://content.backcountry.com/promo_upload/bcs/brand/backcountry-access/BCA_Logo.png" alt="Backcountry Access Logo"/>
         </a>
         <h2>Colorado's Beacon Parks</h2>
