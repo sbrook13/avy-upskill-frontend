@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTimes, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import React, {useState, useEffect, useLayoutEffect} from 'react';
+import { faTimes, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import React, {useState, useEffect} from 'react';
 import { daysURL } from '../constants';
 import {reformatDate, captureInput} from '../utils/functions';
 import {postToBackend, deleteFromBackend} from '../utils/postToBackend';

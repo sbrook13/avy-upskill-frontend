@@ -2,7 +2,7 @@ import {signupURL, loginURL} from '../constants'
 import {parseJSON, setToken, handleError} from './functions'
 import { getProfile } from './getProfile'
 
-export function createUser(e, setUser, userInfo, setIsOpen, handleError){ 
+export function createUser(e, setUser, userInfo, setIsOpen){ 
   e.preventDefault()
   fetch(signupURL, {
     method: 'POST', 

@@ -1,7 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {parseJSON, handleError} from '../utils/functions'
-import {kbygPrinciples} from '../constants'
-
+import React from 'react';
+// import {kbygPrinciples} from '../constants'
 
 function KnowBeforeYouGo() {
 

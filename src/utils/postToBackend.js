@@ -1,6 +1,3 @@
-import { commentsURL, ratingsURL, areasURL, daysURL } from '../constants'
-import {parseJSON} from './functions'
-
 export function postToBackend (userInput, url) {
   fetch(url, {
     method: "POST", 

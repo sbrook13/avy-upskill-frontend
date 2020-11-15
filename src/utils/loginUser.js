@@ -2,7 +2,7 @@ import {loginURL} from '../constants'
 import {parseJSON, setToken, handleError} from './functions'
 import {getProfile} from './getProfile'
 
-export function loginUser(e, setUser, userInfo, setIsOpen, handleError){ 
+export function loginUser(e, setUser, userInfo, setIsOpen){ 
   e.preventDefault()
   fetch(loginURL, {
     method: 'POST', 

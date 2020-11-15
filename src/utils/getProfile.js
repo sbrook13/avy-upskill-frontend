@@ -1,5 +1,5 @@
 import {profileURL} from '../constants'
-import {parseJSON, handleError} from './functions'
+import {parseJSON} from './functions'
 
 export function getProfile(setUser){ 
   fetch(profileURL, {
@@ -13,9 +13,6 @@ export function getProfile(setUser){
     .then(result => {
       if(result.id){
         setUser(result)
-      } else {
-        throw new Error
-      }      
+      } 
     })
-    .catch(handleError(Error))
 }  

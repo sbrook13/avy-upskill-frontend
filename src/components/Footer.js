@@ -14,19 +14,21 @@ function Footer() {
         <p>
           <a 
             href="mailto:sbrook13@gmail.com" 
-            target="_blank">
+            target="_blank"
+            rel="noreferrer">
             <FontAwesomeIcon icon={faEnvelopeSquare} className="footer-icon" size="2x" />
           </a>
           <a 
           href="https://www.linkedin.com/in/sbrook13/" 
-          target="_blank">
+          target="_blank"
+          rel="noreferrer">
             <FontAwesomeIcon icon={faLinkedin} className="footer-icon" size="2x" />
           </a>
 
         </p>
       </div>
       <div>
-        <a href="https://www.avalanche.state.co.us/" target="_blank">
+        <a href="https://www.avalanche.state.co.us/" target="_blank" rel="noreferrer">
           <button className="button">Checkout the CAIC Avalanche Forecast</button>
         </a>
       </div>

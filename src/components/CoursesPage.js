@@ -86,7 +86,7 @@ function CoursesPage() {
   return (
     <div className="CoursesPage main-section">
       <section className="page-title">
-      <a href="https://avtraining.org/" target="_blank">
+      <a href="https://avtraining.org/" target="_blank" rel="noreferrer">
         <img src="https://payettepowderguides.com/assets/images/page/aiare-logo.png" alt="Avalanche Research + Education logo"/>
       </a>
       <h2>Prepare Yourself for Backcountry Travel</h2>
