@@ -1,5 +1,5 @@
 import {profileURL} from '../constants'
-import {parseJSON} from './functions'
+import {parseJSON, handleError} from './functions'
 
 export function getProfile(setUser){ 
   fetch(profileURL, {
@@ -17,5 +17,5 @@ export function getProfile(setUser){
         throw new Error
       }      
     })
-    .catch(error)
+    .catch(handleError(Error))
 }  
