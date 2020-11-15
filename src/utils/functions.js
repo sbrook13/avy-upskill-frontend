@@ -2,6 +2,11 @@ export function handleChange(event, setValue){
   setValue(event.target.value)
 }
 
+export function handleError(error){
+  const errorMessage = document.querySelector('.login-error')
+  errorMessage.innerHTML = error
+}
+
 export function setToken(token){
   localStorage.setItem('token', token)
 }

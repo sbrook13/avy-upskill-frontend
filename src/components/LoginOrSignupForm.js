@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {handleChange} from '../utils/functions'
+import {handleChange, handleError} from '../utils/functions'
 import {loginUser} from '../utils/loginUser'
 import {createUser} from '../utils/createUser'
 
@@ -15,11 +15,6 @@ function LoginOrSignupForm({setUser, type, setIsOpen}) {
     } else {
       createUser(event, setUser, userInfo, setIsOpen, handleError)
     }
-  }
-
-  function handleError(error){
-    const errorMessage = document.querySelector('.login-error')
-    errorMessage.innerHTML = error
   }
 
   return (
