@@ -1,7 +1,6 @@
 import {signupURL, loginURL} from '../constants'
 import {parseJSON, setToken, handleError} from './functions'
 import { getProfile } from './getProfile'
-import { loginUser } from './loginUser'
 
 export function createUser(e, setUser, userInfo, setIsOpen, handleError){ 
   e.preventDefault()
