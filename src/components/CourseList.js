@@ -16,7 +16,6 @@ class CoursesList extends React.Component {
   }
 
   displayCourses = () => {
-    console.log(this.props.coursesToDisplay)
     return this.props.coursesToDisplay.map(course => {
       return (
         <div className="list-item" 

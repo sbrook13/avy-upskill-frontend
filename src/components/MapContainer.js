@@ -52,11 +52,6 @@ function MapContainer({markers, subtitle, type, setSelected}) {
                       key={geo.rsmKey}
                       geography={geo}
                       stroke="#28465b"
-                      onClick={
-                        () => {
-                          console.log(geo.properties.NAME_2)
-                        }
-                      }
                       style={{
                         default: {
                         fill: "#1a354b",

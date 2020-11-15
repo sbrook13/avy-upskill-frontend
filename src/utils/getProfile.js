@@ -14,8 +14,8 @@ export function getProfile(setUser){
       if(result.id){
         setUser(result)
       } else {
-        console.log("else", result)
+        throw new Error
       }      
     })
-    .catch(error => console.log("ERROR!", error))
+    .catch(error)
 }  
