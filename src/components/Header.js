@@ -32,7 +32,9 @@ function Header({user, setUser, setIsOpen, type}) {
     <div className="header">
       <header className="main-header">
         <div className="title">
-          <h1>AvyUpskill</h1>
+          <Link to="/">
+            <h1>AvyUpskill</h1>
+          </Link>
           <h2>Colorado's Backcountry Resource Center</h2>
         </div>
         <div className="stack-sections right-align">

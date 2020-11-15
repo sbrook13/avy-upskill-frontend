@@ -111,7 +111,6 @@ const filterCourses = () => {
         const filteredByCourseType = courses.filter(course => course.class_type === selectedCourseType)
         const secondFilterByProvider = filteredByCourseType.filter(course => course.provider === selectedProvider)
         if (secondFilterByProvider.length === 0){
-          console.log("DOES NOT EXIST!")
           const messageLine = document.querySelector('.bad-search')
           messageLine.innerHTML = "Sorry, that combination does not exist. Try again!"
         } else {
