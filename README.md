@@ -24,6 +24,10 @@ AvyUpskill is the one-stop-shop for backcountry skiing information in Colorado, 
 - User can add comments / ratings for backcountry ski zones.
 - Guests and Users can see upcoming courses, beacon parks, and backcountry zones in Colorado.
 
+## Demo Video
+
+[Watch demo video on YouTube] (https://youtu.be/rK9MzczNhbw)
+
 ## How It Works
 
 ### Landing Page
