@@ -26,7 +26,7 @@ AvyUpskill is the one-stop-shop for backcountry skiing information in Colorado, 
 
 ## Demo Video
 
-[Watch demo video on YouTube] (https://youtu.be/rK9MzczNhbw)
+[Watch demo video on YouTube](https://youtu.be/rK9MzczNhbw)
 
 ## How It Works
 
