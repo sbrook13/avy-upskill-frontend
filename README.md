@@ -147,6 +147,8 @@ To start the server run
     npm-start 
 ```
 
+or visit the live website at http://avyupskill.firebaseapp.com
+
 ## Technology Used
 
 - React
